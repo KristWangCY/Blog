@@ -1,23 +1,18 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import WeatherPanel from "@/components/ui/WeatherPanel";
+import AIBriefPanel from "@/components/ui/AIBriefPanel";
 
 export default function Home() {
   const posts = getAllPosts();
 
   const sortedPosts = [...posts]
-    // 过滤掉中文版本
     .filter((post) => !post.slug.endsWith("-cn"))
-
-    // 排序
     .sort((a, b) => {
       if (a.pinned && !b.pinned) return -1;
       if (!a.pinned && b.pinned) return 1;
 
-      return (
-        new Date(b.date).getTime() -
-        new Date(a.date).getTime()
-      );
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
 
   return (
@@ -45,7 +40,6 @@ export default function Home() {
 
             <div className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
               <p>This blog is a collection of all my interests and thoughts.</p>
-
               <p className="mt-3">I'll keep updating it along the way.</p>
             </div>
 
@@ -75,15 +69,62 @@ export default function Home() {
                 View Gallery
               </Link>
             </div>
-          <div className="mt-12 max-w-lg">
-            <WeatherPanel />
+
+            <div className="mt-12 max-w-lg">
+              <WeatherPanel />
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* WHAT'S THE CRAIC */}
+      <section className="mx-auto mt-6 max-w-7xl px-6">
+        <div className="flex items-center gap-6">
+          <div className="h-px flex-1 bg-zinc-800" />
+
+          <h2 className="whitespace-nowrap text-center font-serif text-sm tracking-[0.45em] text-zinc-400">
+            WHAT&apos;S THE CRAIC?
+          </h2>
+
+          <div className="h-px flex-1 bg-zinc-800" />
+        </div>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <AIBriefPanel />
+
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5 transition hover:border-zinc-600 hover:bg-zinc-900/80">
+            <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
+              Market Watch
+            </p>
+
+            <h3 className="mt-3 text-lg font-medium text-white">
+              Crypto & Quant Signals
+            </h3>
+
+            <p className="mt-3 text-sm leading-6 text-zinc-400">
+              Key movements, sentiment changes, and research ideas from daily
+              news.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5 transition hover:border-zinc-600 hover:bg-zinc-900/80">
+            <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
+              Blog Ideas
+            </p>
+
+            <h3 className="mt-3 text-lg font-medium text-white">
+              Writing Inspiration
+            </h3>
+
+            <p className="mt-3 text-sm leading-6 text-zinc-400">
+            I developed some features to capture US stock and crypto news with LLM APIs, and also monitor the weather and give advice with AI.
+            </p>
           </div>
         </div>
       </section>
 
       {/* BLOG */}
-      <section id="blog" className="mx-auto max-w-7xl px-6 pb-24">
+      <section id="blog" className="mx-auto mt-24 max-w-7xl px-6 pb-24">
         <div className="mb-10 flex items-center gap-4">
           <div className="h-px flex-1 bg-zinc-800" />
 
@@ -181,7 +222,7 @@ export default function Home() {
                 engineering work.
               </p>
 
-              <div className="mt-8 flex items-center text-sm text-zinc-300">
+              <div className="mt-8 flex items-center text-sm text-blue-400">
                 Explore Repositories →
               </div>
             </div>
