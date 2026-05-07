@@ -5,10 +5,12 @@ import matter from "gray-matter";
 export type Post = {
   slug: string;
   title: string;
+  subtitle?: string;
   category: string;
   description: string;
   date: string;
   content: string;
+  pinned?: boolean;
 };
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
@@ -25,19 +27,31 @@ export function getAllPosts(): Post[] {
     .map((fileName) => {
       const slug = fileName.replace(/\.md$/, "");
       const fullPath = path.join(postsDirectory, fileName);
+
       const fileContents = fs.readFileSync(fullPath, "utf8");
+
       const { data, content } = matter(fileContents);
 
       return {
         slug,
         title: data.title || "Untitled",
+        subtitle: data.subtitle || "",
         category: data.category || "Notes",
         description: data.description || "",
         date: data.date || "",
+        pinned: data.pinned ?? false,
         content,
       };
     })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    .sort((a, b) => {
+      if (a.pinned && !b.pinned) return -1;
+      if (!a.pinned && b.pinned) return 1;
+
+      return (
+        new Date(b.date).getTime() -
+        new Date(a.date).getTime()
+      );
+    });
 }
 
 export function getPostBySlug(slug: string): Post | null {
@@ -48,14 +62,17 @@ export function getPostBySlug(slug: string): Post | null {
   }
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
+
   const { data, content } = matter(fileContents);
 
   return {
     slug,
     title: data.title || "Untitled",
+    subtitle: data.subtitle || "",
     category: data.category || "Notes",
     description: data.description || "",
     date: data.date || "",
+    pinned: data.pinned ?? false,
     content,
   };
 }

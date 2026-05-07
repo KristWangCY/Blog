@@ -4,11 +4,25 @@ import { getAllPosts } from "@/lib/posts";
 export default function Home() {
   const posts = getAllPosts();
 
+  const sortedPosts = [...posts]
+    // 过滤掉中文版本
+    .filter((post) => !post.slug.endsWith("-cn"))
+
+    // 排序
+    .sort((a, b) => {
+      if (a.pinned && !b.pinned) return -1;
+      if (!a.pinned && b.pinned) return 1;
+
+      return (
+        new Date(b.date).getTime() -
+        new Date(a.date).getTime()
+      );
+    });
+
   return (
     <main className="min-h-screen bg-black text-white">
       {/* HERO */}
       <section className="relative overflow-hidden bg-black">
-        {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{
@@ -16,13 +30,9 @@ export default function Home() {
           }}
         />
 
-        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/5" />
 
-        {/* Content */}
         <div className="relative z-10 mx-auto grid min-h-screen max-w-7xl items-center gap-12 px-10 py-24 lg:grid-cols-2">
-          
-          {/* LEFT CONTENT */}
           <div>
             <p className="mb-4 text-sm uppercase tracking-[0.2em] text-zinc-500">
               Personal Blog
@@ -32,15 +42,11 @@ export default function Home() {
               Chenyu Notes
             </h1>
 
-          <div className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
-            <p>
-              This blog is a collection of all my interests and thoughts.
-            </p>
+            <div className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
+              <p>This blog is a collection of all my interests and thoughts.</p>
 
-            <p className="mt-3">
-              I'll keep updating it along the way.
-            </p>
-          </div>
+              <p className="mt-3">I'll keep updating it along the way.</p>
+            </div>
 
             <p className="mt-4 text-zinc-500">
               Established in 5th May, 2026.
@@ -70,7 +76,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* RIGHT SIDE EMPTY FOR IMAGE BALANCE */}
           <div />
         </div>
       </section>
@@ -88,12 +93,18 @@ export default function Home() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
+          {sortedPosts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
               <article className="h-full rounded-3xl border border-zinc-800 bg-zinc-900 p-6 transition duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-800">
-                <p className="mb-3 text-sm text-indigo-400">
-                  {post.category}
-                </p>
+                <div className="mb-3 flex items-center justify-between gap-3">
+                  <p className="text-sm text-indigo-400">{post.category}</p>
+
+                  {post.pinned && (
+                    <span className="rounded-full border border-yellow-500/40 bg-yellow-500/10 px-3 py-1 text-xs font-medium text-yellow-300">
+                      📌 Pinned
+                    </span>
+                  )}
+                </div>
 
                 <h2 className="text-2xl font-semibold">{post.title}</h2>
 
