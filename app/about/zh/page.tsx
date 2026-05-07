@@ -11,6 +11,7 @@ export default function AboutChinesePage() {
 
           <Link
             href="/about"
+            replace
             className="rounded-full border border-zinc-700 px-4 py-2 text-sm text-zinc-300 transition hover:border-white hover:text-white"
           >
             English

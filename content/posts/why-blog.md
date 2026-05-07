@@ -9,7 +9,7 @@ pinned: true
 
 ## Preface
 
-If you have already read the **About Me** section, you probably noticed that both my academic and professional background are quite unconventional and complex.
+If you have already read the **[About Me](/about)** section, you probably noticed that both my academic and professional background are quite unconventional and complex.
 
 I am interested in many different things.
 
