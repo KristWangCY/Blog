@@ -6,4 +6,4 @@ date: "2026-05-05"
 pinned: false
 ---
 
-This is a test too.
+## What kind of technologies do we need to build an AI system?
