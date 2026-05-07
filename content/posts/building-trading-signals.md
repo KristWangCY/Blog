@@ -1,6 +1,6 @@
 ---
 title: "Building Trading Signals"
-category: "Quant Finance"
+category: "Business Analytics"
 description: "Thoughts on factor investing, alpha research, and quantitative workflows."
 date: "2026-05-06"
 pinned: false

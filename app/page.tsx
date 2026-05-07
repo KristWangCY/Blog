@@ -44,7 +44,7 @@ export default function Home() {
             </div>
 
             <p className="mt-4 text-zinc-500">
-              Established in 5th May, 2026.
+              Established by Chenyu Wang in 5th May, 2026.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
