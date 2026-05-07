@@ -7,49 +7,76 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white">
       {/* HERO */}
-      <section className="mx-auto max-w-5xl px-6 py-24">
-        <p className="mb-4 text-sm tracking-[0.2em] text-zinc-500 uppercase">
-          Personal Blog
-        </p>
+      <section className="relative overflow-hidden bg-black">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-40"
+          style={{
+            backgroundImage: "url('/hero-bg.png')",
+          }}
+        />
 
-        <h1 className="max-w-3xl text-6xl font-bold leading-tight">
-          Chenyu Notes
-        </h1>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/5" />
 
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
-          A personal blog about AI, quantitative finance, analytics, and
-          product thinking.
-        </p>
+        {/* Content */}
+        <div className="relative z-10 mx-auto grid min-h-screen max-w-7xl items-center gap-12 px-10 py-24 lg:grid-cols-2">
+          
+          {/* LEFT CONTENT */}
+          <div>
+            <p className="mb-4 text-sm uppercase tracking-[0.2em] text-zinc-500">
+              Personal Blog
+            </p>
 
-        <div className="mt-10 flex flex-wrap gap-4">
-          <a
-            href="#blog"
-            className="rounded-full border border-zinc-700 px-6 py-3 transition hover:border-zinc-500 hover:bg-zinc-900"
-          >
-            Read Blogs
-          </a>
+            <h1 className="max-w-4xl text-6xl font-bold leading-tight md:text-7xl">
+              Chenyu Notes
+            </h1>
 
-          <Link
-            href="/about"
-            className="rounded-full border border-zinc-700 px-6 py-3 transition hover:border-zinc-500 hover:bg-zinc-900"
-          >
-            About Me
-          </Link>
+          <div className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
+            <p>
+              This blog is a collection of all my interests and thoughts.
+            </p>
 
-          <Link
-            href="/gallery"
-            className="rounded-full border border-zinc-700 px-6 py-3 transition hover:border-zinc-500 hover:bg-zinc-900"
-          >
-            View Gallery
-          </Link>
+            <p className="mt-3">
+              I'll keep updating it along the way.
+            </p>
+          </div>
+
+            <p className="mt-4 text-zinc-500">
+              Established in 5th May, 2026.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href="#blog"
+                className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
+              >
+                Read Blogs
+              </a>
+
+              <Link
+                href="/about"
+                className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
+              >
+                About Me
+              </Link>
+
+              <Link
+                href="/gallery"
+                className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
+              >
+                View Gallery
+              </Link>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE EMPTY FOR IMAGE BALANCE */}
+          <div />
         </div>
       </section>
 
       {/* BLOG */}
-      <section
-        id="blog"
-        className="mx-auto max-w-5xl px-6 pb-24"
-      >
+      <section id="blog" className="mx-auto max-w-7xl px-6 pb-24">
         <div className="mb-10 flex items-center gap-4">
           <div className="h-px flex-1 bg-zinc-800" />
 
@@ -60,7 +87,7 @@ export default function Home() {
           <div className="h-px flex-1 bg-zinc-800" />
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
               <article className="h-full rounded-3xl border border-zinc-800 bg-zinc-900 p-6 transition duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-800">
@@ -68,17 +95,11 @@ export default function Home() {
                   {post.category}
                 </p>
 
-                <h2 className="text-2xl font-semibold">
-                  {post.title}
-                </h2>
+                <h2 className="text-2xl font-semibold">{post.title}</h2>
 
-                <p className="mt-4 text-zinc-400">
-                  {post.description}
-                </p>
+                <p className="mt-4 text-zinc-400">{post.description}</p>
 
-                <p className="mt-6 text-sm text-zinc-500">
-                  {post.date}
-                </p>
+                <p className="mt-6 text-sm text-zinc-500">{post.date}</p>
               </article>
             </Link>
           ))}
@@ -86,7 +107,7 @@ export default function Home() {
       </section>
 
       {/* CONNECT */}
-      <section className="mx-auto max-w-5xl px-6 pb-32">
+      <section className="mx-auto max-w-7xl px-6 pb-32">
         <div className="mb-10 flex items-center gap-4">
           <div className="h-px flex-1 bg-zinc-800" />
 
@@ -98,7 +119,6 @@ export default function Home() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {/* LinkedIn */}
           <a
             href="https://www.linkedin.com/in/kristwang/"
             target="_blank"
@@ -126,7 +146,6 @@ export default function Home() {
             </div>
           </a>
 
-          {/* GitHub */}
           <a
             href="https://github.com/KristWangCY"
             target="_blank"
@@ -155,7 +174,6 @@ export default function Home() {
             </div>
           </a>
 
-          {/* WeChat */}
           <div className="group relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/70 p-7 transition duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:bg-zinc-900">
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 transition group-hover:opacity-100" />
 
