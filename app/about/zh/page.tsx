@@ -32,6 +32,7 @@ export default function AboutChinesePage() {
             你好，我是晨钰，不过大多数人会叫我 Krist，
             来源于 Nirvana 乐队的贝斯手。
             我非常喜欢摇滚乐，也玩了很多年的乐队。
+            我不太喜欢给自己加标签，但我确实是一名“极简主义者”。
           </p>
 
             <h2 className="text-2xl font-semibold text-white">

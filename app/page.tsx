@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import WeatherPanel from "@/components/ui/WeatherPanel";
 
 export default function Home() {
   const posts = getAllPosts();
@@ -74,9 +75,10 @@ export default function Home() {
                 View Gallery
               </Link>
             </div>
+          <div className="mt-12 max-w-lg">
+            <WeatherPanel />
           </div>
-
-          <div />
+          </div>
         </div>
       </section>
 

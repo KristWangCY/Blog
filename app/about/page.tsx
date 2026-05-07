@@ -27,10 +27,11 @@ export default function AboutPage() {
 
         <div className="mt-8 space-y-6 text-lg leading-8 text-zinc-400">
           <p>
-            Hi, I'm Chenyu — though most people call me Krist,
+            Hi, I'm Chenyu from China — though most people call me Krist,
             inspired by the bass player of Nirvana.
             I've been deeply passionate about rock music for years
             and spent a long time playing in bands.
+            By the way, I call myself a "minimalist", as you can see from this blog design.
           </p>
 
           <h2 className="text-2xl font-semibold text-white">
