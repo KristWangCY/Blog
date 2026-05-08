@@ -9,17 +9,16 @@ pinned: false
 
 ## Intention
 
-To speak fluent French is always one of my dreams. 
+To speak fluent French has always been one of my dreams.
 
-It is never enough for me to get more skills, and I also feel it is not enough for me to be a billingual. 
+For me, gaining more skills is never enough, and being bilingual is not enough either. I would love to become multilingual and make French one of my professional strengths within the next 5 to 10 years.
 
-To make it professional will be one of my goal in next 5 - 10 years.
+Both travelling to Canada and possibly living there are part of my motivation to learn the language.
 
-To travel or base in Canada would both be options for my intention.
-
-I will try to write what I learned from others in terms of French, both vocabulary and grammar.
+I will also try to write down what I learn from others in French, including vocabulary, expressions, and grammar, as part of my learning journey.
 
 Vas-y!
+
 
 ---
 

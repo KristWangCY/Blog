@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import WeatherPanel from "@/components/ui/WeatherPanel";
 import AIBriefPanel from "@/components/ui/AIBriefPanel";
+import AskChenyuPanel from "@/components/ui/AskChenyuPanel";
 
 export default function Home() {
   const posts = getAllPosts();
@@ -48,12 +49,12 @@ export default function Home() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#blog"
+              <Link
+                href="/features"
                 className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
               >
-                Read Blogs
-              </a>
+                Blog Features
+              </Link>
 
               <Link
                 href="/about"
@@ -70,8 +71,9 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="mt-12 max-w-lg">
+            <div className="mt-12 max-w-lg space-y-6">
               <WeatherPanel />
+              <AskChenyuPanel />
             </div>
           </div>
         </div>
@@ -117,7 +119,8 @@ export default function Home() {
             </h3>
 
             <p className="mt-3 text-sm leading-6 text-zinc-400">
-            I developed some features to capture US stock and crypto news with LLM APIs, and also monitor the weather and give advice with AI.
+              I developed some features to capture US stock and crypto news with
+              LLM APIs, and also monitor the weather and give advice with AI.
             </p>
           </div>
         </div>
