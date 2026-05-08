@@ -1,18 +1,28 @@
 ---
-title: "Random Rambing"
+title: "Random Rambling"
 category: "Personal Notes"
 description: "Thoughts on funny things I encountered."
 date: "2026-05-06"
 pinned: false
 ---
 
+## Introduction:
+
+This blog is only for my life. I can have a space to make some complain.
+
+Hope you can see a real Chenyu rambling in front of you while you are reading.
+
+---
+
 ## 8th May, 2026
 
 I have already applied over 100+ jobs since I came here on 20th March.
 
-But it is rare to get any feedbacks except for some rejections.
+But it is rare to get any feedback except for some rejections.
 
-I've never doubted my own capability and excellence, and I firmly believe I can find a job eventually, I have to go through it.
+I've never doubted my own capability and excellence, and I firmly believe I can find a job eventually, I have to get through it.
+
+Especially I want to make some complain about the speed of recruting process here, I guess I'll have a job when I turn to 80 years old. 
 
 In that case, Ireland is always a weird country to me.
 
@@ -42,11 +52,11 @@ Many days ago(April, 2026), I travelled to London and stayed there for a while, 
 
 When I came back to Ireland, my roommate told me he was robbed by 3 men with black masks, almost in front of the gate of our house.
 
-I am living in Clontarf, which is even validated as a very nice and safe place to live by some local Irish people.
+I am living in Clontarf, which is even considered a very nice and safe place to live by some local Irish people.
 
-But it happened, luckily my roommate was safe and nothing was robbed by those guys.
+But it happened, They just rode the motorcycle and followed my roommate while he's riding an electric scooter.
 
-They just rode the motorcycle and followed my roommate while he's riding an electric scooter.
+Luckily my roommate was safe and nothing was robbed by those guys.
 
 **3. Random Assault:**
 
@@ -56,17 +66,17 @@ He is Chinese, and he came back to Ireland and prepared to participate in our gr
 
 But just one day before the ceremony, he was hit by a stranger on the street, the stranger just beat him.
 
-He didn't expect that at all, the stranger just pushed him on the ground from his back, and got his bones broken, then the stranger just slipped away.
+He didn't expect that at all, the stranger just pushed him on the ground from his back, and got his bones broken, then the stranger just fled the scene.
 
 Call the Garda(Police), but it doesn't work.
 
 They can not track the criminal since they don't have any clues.
 
-So my classmate went to the hospital and stayed there for days, with no any helps...
+So my classmate went to the hospital and stayed there for days, with no help...
 
 ---
 
-I really doubt where the tax goes to in this country.
+Sometimes I genuinely wonder where all the tax money goes.
 
 But **why do I stay here?**
 
@@ -86,10 +96,12 @@ Maybe someday I'll also leave Ireland, and head to another place in the future.
 
 Even I have a decent job here, as long as I make my decision, I'll quit my job for sure.
 
-Life is limited, why do I have to put too much efforts on my destination?
+Life is limited, why should I obsess too much over the destination
 
 The world is unlimited, the Moon or the Mars probably can also be my desitination in my life.
 
 I never feel down — in fact, I feel really motivated about my future.
 
 Never underestimate myself.
+
+---
