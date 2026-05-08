@@ -1,20 +1,23 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/posts";
-import WeatherPanel from "@/components/ui/WeatherPanel";
 import AIBriefPanel from "@/components/ui/AIBriefPanel";
-import AskChenyuPanel from "@/components/ui/AskChenyuPanel";
 
 export default function Home() {
-  const posts = getAllPosts();
-
-  const sortedPosts = [...posts]
-    .filter((post) => !post.slug.endsWith("-cn"))
-    .sort((a, b) => {
-      if (a.pinned && !b.pinned) return -1;
-      if (!a.pinned && b.pinned) return 1;
-
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
+  const blogCategories = [
+    {
+      title: "Work",
+      description:
+        "Notes on energy trading, quantitative finance, business analytics, AI systems, product thinking, and professional projects.",
+      href: "/blog/work",
+      count: "Work Notes",
+    },
+    {
+      title: "Life",
+      description:
+        "Personal reflections, French study records, random rambling, daily observations, and thoughts outside work.",
+      href: "/blog/life",
+      count: "Life Notes",
+    },
+  ];
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -49,31 +52,28 @@ export default function Home() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href="/features"
-                className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
-              >
-                Blog Features
-              </Link>
+
+            <Link
+              href="/blog/why-blog?from=home"
+              className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
+            >
+              Read Me
+            </Link> 
 
               <Link
                 href="/about"
                 className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
               >
                 About Me
-              </Link>
+              </Link> 
 
               <Link
-                href="/gallery"
+                href="/features"
                 className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
               >
-                View Gallery
-              </Link>
-            </div>
+                Blog Feature Hub
+              </Link>              
 
-            <div className="mt-12 max-w-lg space-y-6">
-              <WeatherPanel />
-              <AskChenyuPanel />
             </div>
           </div>
         </div>
@@ -119,8 +119,9 @@ export default function Home() {
             </h3>
 
             <p className="mt-3 text-sm leading-6 text-zinc-400">
-              I developed some features to capture US stock and crypto news with
-              LLM APIs, and also monitor the weather and give advice with AI.
+              I developed some features to capture US stock and crypto news
+              with LLM APIs, and also monitor the weather and give advice
+              with AI.
             </p>
           </div>
         </div>
@@ -138,25 +139,23 @@ export default function Home() {
           <div className="h-px flex-1 bg-zinc-800" />
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {sortedPosts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <article className="h-full rounded-3xl border border-zinc-800 bg-zinc-900 p-6 transition duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-800">
-                <div className="mb-3 flex items-center justify-between gap-3">
-                  <p className="text-sm text-indigo-400">{post.category}</p>
+        <div className="grid gap-8 md:grid-cols-2">
+          {blogCategories.map((category) => (
+            <Link key={category.title} href={category.href}>
+              <article className="group h-full min-h-[320px] rounded-3xl border border-zinc-800 bg-zinc-900 p-8 transition duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-800">
+                <p className="text-sm text-indigo-400">{category.count}</p>
 
-                  {post.pinned && (
-                    <span className="rounded-full border border-yellow-500/40 bg-yellow-500/10 px-3 py-1 text-xs font-medium text-yellow-300">
-                      📌 Pinned
-                    </span>
-                  )}
-                </div>
+                <h2 className="mt-6 text-4xl font-semibold text-white">
+                  {category.title}
+                </h2>
 
-                <h2 className="text-2xl font-semibold">{post.title}</h2>
+                <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-400">
+                  {category.description}
+                </p>
 
-                <p className="mt-4 text-zinc-400">{post.description}</p>
-
-                <p className="mt-6 text-sm text-zinc-500">{post.date}</p>
+                <p className="mt-12 text-sm text-zinc-500 transition group-hover:text-indigo-400">
+                  View posts →
+                </p>
               </article>
             </Link>
           ))}

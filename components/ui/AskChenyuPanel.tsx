@@ -26,8 +26,14 @@ export default function AskChenyuPanel() {
       });
 
       const data = await res.json();
-        console.log(data);
-        setAnswer(data.answer || data.error || "Sorry, I could not answer that.");
+
+      console.log(data);
+
+      setAnswer(
+        data.answer ||
+          data.error ||
+          "Sorry, I could not answer that."
+      );
     } catch (error) {
       console.error(error);
       setAnswer("Something went wrong. Please try again.");
@@ -37,14 +43,16 @@ export default function AskChenyuPanel() {
   }
 
   return (
-    <section className="w-[415px] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-md">
+    <section className="w-full rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-md md:p-8">
       {/* HEADER */}
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-semibold text-white">Ask Chenyu</h2>
+          <h2 className="text-2xl font-semibold text-white md:text-3xl">
+            Ask Chenyu
+          </h2>
 
-          <p className="mt-2 max-w-[300px] text-sm leading-7 text-gray-400">
-            AI assistant for my projects and experience.
+          <p className="mt-2 max-w-2xl text-sm leading-7 text-gray-400">
+            AI assistant for my projects, research, and experience.
           </p>
         </div>
 
@@ -58,25 +66,27 @@ export default function AskChenyuPanel() {
 
       {expanded && (
         <>
-          <div className="mt-5 flex items-center gap-3">
+          {/* SEARCH */}
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <input
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && askChenyu()}
               placeholder="Ask me anything..."
-              className="w-56 rounded-xl border border-white/10 bg-black px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-white/30"
+              className="w-full rounded-xl border border-white/10 bg-black px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-white/30"
             />
 
             <button
               type="button"
               onClick={askChenyu}
               disabled={loading}
-              className="w-[100px] rounded-xl bg-white px-5 py-3 font-medium text-black transition hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-60"
+              className="rounded-xl bg-white px-8 py-3 font-medium text-black transition hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-60 sm:w-[140px]"
             >
               {loading ? "..." : "Ask"}
             </button>
           </div>
 
+          {/* QUICK TAGS */}
           <div className="mt-4 flex flex-wrap gap-2">
             {["Trading", "Projects", "Dissertation"].map((item) => (
               <button
@@ -90,13 +100,16 @@ export default function AskChenyuPanel() {
             ))}
           </div>
 
+          {/* ANSWER */}
           {answer && (
-            <div className="mt-5 rounded-xl border border-white/10 bg-black/40 p-4">
+            <div className="mt-6 rounded-2xl border border-white/10 bg-black/40 p-5">
               <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
                 Chenyu
               </p>
 
-              <p className="mt-3 text-sm leading-7 text-zinc-300">{answer}</p>
+              <p className="mt-4 whitespace-pre-line text-sm leading-7 text-zinc-300">
+                {answer}
+              </p>
             </div>
           )}
         </>

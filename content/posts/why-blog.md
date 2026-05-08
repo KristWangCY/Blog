@@ -2,7 +2,7 @@
 title: "Why do I create this blog?"
 subtitle: "A personal autobiography of my thinking process."
 category: "Personal Notes"
-description: "The reason why I create this blog."
+description: "Life is too long to overthink, and work is only a small part of it."
 date: "2026-05-05"
 pinned: true
 ---

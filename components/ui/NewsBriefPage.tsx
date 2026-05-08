@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type NewsItem = {
@@ -17,7 +18,18 @@ type Props = {
   category: "us-stock" | "crypto";
 };
 
-export default function NewsBriefPage({ title, subtitle, category }: Props) {
+export default function NewsBriefPage({
+  title,
+  subtitle,
+  category,
+}: Props) {
+  const searchParams = useSearchParams();
+  const from = searchParams.get("from");
+
+  const backHref = from === "market" ? "/features/market" : "/";
+  const backLabel =
+    from === "market" ? "← Back Market" : "← Back Home";
+
   const [news, setNews] = useState<NewsItem[]>([]);
   const [analysisMap, setAnalysisMap] = useState<Record<string, string>>({});
   const [loadingMap, setLoadingMap] = useState<Record<string, boolean>>({});
@@ -66,13 +78,19 @@ export default function NewsBriefPage({ title, subtitle, category }: Props) {
   return (
     <main className="min-h-screen bg-black px-6 py-16 text-white">
       <section className="mx-auto max-w-5xl">
-        <Link
-          href="/"
-          className="text-sm text-zinc-500 underline underline-offset-4 hover:text-white"
-        >
-          ← Back Home
-        </Link>
+        {/* NAVIGATION */}
+        <div className="flex items-center gap-6">
+          <Link
+            href={backHref}
+            className="group inline-flex items-center gap-3 text-zinc-500 transition hover:text-white"
+          >
+            <span className="text-sm uppercase tracking-[0.25em]">
+              {backLabel}
+            </span>
+          </Link>
+        </div>
 
+        {/* HEADER */}
         <div className="mt-10 flex items-center gap-6">
           <div className="h-px flex-1 bg-zinc-800" />
 
@@ -85,31 +103,35 @@ export default function NewsBriefPage({ title, subtitle, category }: Props) {
 
         <p className="mt-8 text-center text-zinc-400">{subtitle}</p>
 
+        {/* NEWS */}
         <div className="mt-12 grid gap-5">
           {news.map((item) => (
             <article
               key={item.id}
               className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5"
             >
-        <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] text-zinc-500">
-        <span>{item.source}</span>
+              {/* META */}
+              <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+                <span>{item.source}</span>
 
-        <span className="text-zinc-700">•</span>
+                <span className="text-zinc-700">•</span>
 
-        <span>
-            {new Date(item.publishedAt).toLocaleString("en-US", {
-            month: "short",
-            day: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-            })}
-        </span>
-        </div>
+                <span>
+                  {new Date(item.publishedAt).toLocaleString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </span>
+              </div>
 
+              {/* TITLE */}
               <h2 className="mt-2 text-xl font-medium text-white">
                 {item.title}
               </h2>
 
+              {/* ACTIONS */}
               <div className="mt-4 flex flex-wrap gap-4">
                 <a
                   href={item.link}
@@ -128,6 +150,7 @@ export default function NewsBriefPage({ title, subtitle, category }: Props) {
                 </button>
               </div>
 
+              {/* ANALYSIS */}
               {(loadingMap[item.id] || analysisMap[item.id]) && (
                 <div className="mt-5 rounded-xl border border-zinc-800 bg-black/50 p-5">
                   <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">

@@ -18,10 +18,6 @@ export default function AboutChinesePage() {
           </Link>
         </div>
 
-        <p className="mt-8 text-sm text-zinc-400">
-          关于
-        </p>
-
         <h1 className="mt-4 text-5xl font-bold">
           关于我
         </h1>

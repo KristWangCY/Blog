@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 
 const galleryImages = [
@@ -29,12 +28,12 @@ export default function GalleryPage() {
             </h1>
           </div>
 
-          <Link
-            href="/"
+          <button
+            onClick={() => window.history.back()}
             className="rounded-full border border-zinc-700 px-5 py-2 text-sm transition hover:border-zinc-500 hover:bg-zinc-900"
           >
-            Back Home
-          </Link>
+            Back
+          </button>
         </div>
       </section>
 
@@ -45,7 +44,7 @@ export default function GalleryPage() {
             <button
               key={image.src}
               onClick={() => setSelectedImage(image.src)}
-              className="group overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 text-left"
+              className="group overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 text-left transition hover:border-zinc-600"
             >
               <div className="overflow-hidden">
                 <Image
@@ -58,7 +57,7 @@ export default function GalleryPage() {
               </div>
 
               <div className="p-5">
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm leading-6 text-zinc-400">
                   {image.alt}
                 </p>
               </div>

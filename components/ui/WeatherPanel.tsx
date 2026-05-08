@@ -76,15 +76,15 @@ export default function WeatherPanel() {
   }
 
   return (
-    <section className="w-[415px] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-md">
+    <section className="w-full rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur-md md:p-8">
       {/* HEADER */}
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-semibold text-white">
+          <h2 className="text-2xl font-semibold text-white md:text-3xl">
             Today&apos;s Weather
           </h2>
 
-          <p className="mt-2 max-w-[300px] text-sm leading-7 text-gray-400">
+          <p className="mt-2 max-w-2xl text-sm leading-7 text-gray-400">
             Search weather by city.
           </p>
         </div>
@@ -97,22 +97,21 @@ export default function WeatherPanel() {
         </button>
       </div>
 
-      {/* COLLAPSIBLE CONTENT */}
       {expanded && (
         <>
           {/* SEARCH */}
-          <div className="mt-5 flex items-center gap-3">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <input
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && fetchWeather()}
               placeholder="e.g. Dublin"
-              className="w-56 rounded-xl border border-white/10 bg-black px-4 py-3 text-white outline-none transition focus:border-white/30"
+              className="w-full rounded-xl border border-white/10 bg-black px-4 py-3 text-white outline-none transition focus:border-white/30"
             />
 
             <button
               onClick={() => fetchWeather()}
-              className="w-[100px] rounded-xl bg-white py-3 font-medium text-black transition hover:bg-gray-200"
+              className="rounded-xl bg-white px-8 py-3 font-medium text-black transition hover:bg-gray-200 sm:w-[140px]"
             >
               Search
             </button>
@@ -131,22 +130,19 @@ export default function WeatherPanel() {
             ))}
           </div>
 
-          {/* LOADING */}
           {loading && (
             <p className="mt-5 text-sm text-gray-400">
               Loading weather...
             </p>
           )}
 
-          {/* PLACE */}
           {place && !loading && (
             <p className="mt-5 text-sm text-gray-300">{place}</p>
           )}
 
-          {/* WEATHER RESULT */}
           {weather && !loading && (
             <>
-              <div className="mt-5 rounded-xl border border-white/10 bg-black/40 p-4">
+              <div className="mt-5 rounded-xl border border-white/10 bg-black/40 p-5">
                 <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
                   AI Weather Note
                 </p>
@@ -156,10 +152,9 @@ export default function WeatherPanel() {
                 </p>
               </div>
 
-              <div className="mt-5 grid grid-cols-2 gap-4">
+              <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 <div className="rounded-xl bg-black/40 p-4">
                   <p className="text-sm text-gray-400">Temperature</p>
-
                   <p className="mt-2 text-2xl font-semibold text-white">
                     {weather.temperature_2m}°C
                   </p>
@@ -167,7 +162,6 @@ export default function WeatherPanel() {
 
                 <div className="rounded-xl bg-black/40 p-4">
                   <p className="text-sm text-gray-400">Feels Like</p>
-
                   <p className="mt-2 text-2xl font-semibold text-white">
                     {weather.apparent_temperature}°C
                   </p>
@@ -175,7 +169,6 @@ export default function WeatherPanel() {
 
                 <div className="rounded-xl bg-black/40 p-4">
                   <p className="text-sm text-gray-400">Humidity</p>
-
                   <p className="mt-2 text-2xl font-semibold text-white">
                     {weather.relative_humidity_2m}%
                   </p>
@@ -183,7 +176,6 @@ export default function WeatherPanel() {
 
                 <div className="rounded-xl bg-black/40 p-4">
                   <p className="text-sm text-gray-400">Wind</p>
-
                   <p className="mt-2 text-2xl font-semibold text-white">
                     {weather.wind_speed_10m} km/h
                   </p>

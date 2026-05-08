@@ -17,10 +17,6 @@ export default function AboutPage() {
           </Link>
         </div>
 
-        <p className="mt-8 text-sm text-zinc-400">
-          About
-        </p>
-
         <h1 className="mt-4 text-5xl font-bold">
           About Me
         </h1>
