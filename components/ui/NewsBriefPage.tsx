@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -24,11 +25,7 @@ export default function NewsBriefPage({
   category,
 }: Props) {
   const searchParams = useSearchParams();
-  const from = searchParams.get("from");
-
-  const backHref = from === "market" ? "/features/market" : "/";
-  const backLabel =
-    from === "market" ? "← Back Market" : "← Back Home";
+  const from = searchParams.get("from") || "/";
 
   const [news, setNews] = useState<NewsItem[]>([]);
   const [analysisMap, setAnalysisMap] = useState<Record<string, string>>({});
@@ -79,16 +76,16 @@ export default function NewsBriefPage({
     <main className="min-h-screen bg-black px-6 py-16 text-white">
       <section className="mx-auto max-w-5xl">
         {/* NAVIGATION */}
-        <div className="flex items-center gap-6">
-          <Link
-            href={backHref}
-            className="group inline-flex items-center gap-3 text-zinc-500 transition hover:text-white"
-          >
-            <span className="text-sm uppercase tracking-[0.25em]">
-              {backLabel}
-            </span>
-          </Link>
-        </div>
+        <Link
+          href={from}
+          className="group inline-flex items-center gap-3 text-zinc-500 transition hover:text-white"
+        >
+          <ArrowLeft className="h-4 w-4 transition group-hover:-translate-x-1" />
+
+          <span className="text-sm uppercase tracking-[0.25em]">
+            Back
+          </span>
+        </Link>
 
         {/* HEADER */}
         <div className="mt-10 flex items-center gap-6">
@@ -110,7 +107,6 @@ export default function NewsBriefPage({
               key={item.id}
               className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5"
             >
-              {/* META */}
               <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] text-zinc-500">
                 <span>{item.source}</span>
 
@@ -126,12 +122,10 @@ export default function NewsBriefPage({
                 </span>
               </div>
 
-              {/* TITLE */}
               <h2 className="mt-2 text-xl font-medium text-white">
                 {item.title}
               </h2>
 
-              {/* ACTIONS */}
               <div className="mt-4 flex flex-wrap gap-4">
                 <a
                   href={item.link}
@@ -150,7 +144,6 @@ export default function NewsBriefPage({
                 </button>
               </div>
 
-              {/* ANALYSIS */}
               {(loadingMap[item.id] || analysisMap[item.id]) && (
                 <div className="mt-5 rounded-xl border border-zinc-800 bg-black/50 p-5">
                   <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">

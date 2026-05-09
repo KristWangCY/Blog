@@ -7,14 +7,14 @@ export default function Home() {
       title: "Work",
       description:
         "Notes on energy trading, quantitative finance, business analytics, AI systems, product thinking, and professional projects.",
-      href: "/blog/work",
+      href: "/blog/work?from=/",
       count: "Work Notes",
     },
     {
       title: "Life",
       description:
         "Personal reflections, French study records, random rambling, daily observations, and thoughts outside work.",
-      href: "/blog/life",
+      href: "/blog/life?from=/",
       count: "Life Notes",
     },
   ];

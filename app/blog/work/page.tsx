@@ -2,7 +2,18 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import BackButton from "@/components/ui/BackButton";
 
-export default function WorkBlogPage() {
+type WorkBlogPageProps = {
+  searchParams?: Promise<{
+    from?: string;
+  }>;
+};
+
+export default async function WorkBlogPage({
+  searchParams,
+}: WorkBlogPageProps) {
+  const params = await searchParams;
+  const from = params?.from || "/blog";
+
   const posts = getAllPosts();
 
   const workPosts = posts
@@ -26,7 +37,7 @@ export default function WorkBlogPage() {
     <main className="min-h-screen bg-black px-6 py-24 text-white">
       <div className="mx-auto max-w-6xl">
         {/* BACK */}
-        <BackButton />
+        <BackButton href={from} />
 
         {/* HEADER */}
         <div>
@@ -36,7 +47,7 @@ export default function WorkBlogPage() {
 
           <h1 className="text-6xl font-bold">Work</h1>
 
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-400">
+          <p className="mt-6 text-2xl leading-10 text-zinc-400 italic">
             Research, quantitative finance, AI systems, analytics,
             trading, engineering, and professional projects.
           </p>

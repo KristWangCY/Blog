@@ -12,31 +12,58 @@ export default function AIBriefPanel() {
       </h3>
 
       <p className="mt-3 text-sm leading-6 text-zinc-400">
-        AI-curated updates on markets, crypto, technology, and product thinking.
+        AI-curated updates on markets, crypto, technology,
+        and product thinking.
       </p>
 
       <div className="mt-6 grid gap-3">
+        {/* US STOCK */}
         <Link
-          href="/brief/us-stock"
-          className="rounded-xl border border-zinc-800 bg-black/40 p-4 transition hover:border-zinc-600 hover:bg-zinc-900"
+          href="/brief/us-stock?from=/"
+          className="
+            rounded-xl
+            border border-zinc-800
+            bg-black/40
+            p-4
+            transition
+            hover:border-zinc-600
+            hover:bg-zinc-900
+          "
         >
           <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
             Market
           </p>
-          <h4 className="mt-2 text-base font-medium text-white">US STOCK</h4>
+
+          <h4 className="mt-2 text-base font-medium text-white">
+            US STOCK
+          </h4>
+
           <p className="mt-2 text-xs leading-5 text-zinc-400">
             Daily selected news from the US equity market.
           </p>
         </Link>
 
+        {/* CRYPTO */}
         <Link
-          href="/brief/crypto"
-          className="rounded-xl border border-zinc-800 bg-black/40 p-4 transition hover:border-zinc-600 hover:bg-zinc-900"
+          href="/brief/crypto?from=/"
+          className="
+            rounded-xl
+            border border-zinc-800
+            bg-black/40
+            p-4
+            transition
+            hover:border-zinc-600
+            hover:bg-zinc-900
+          "
         >
           <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
             Digital Assets
           </p>
-          <h4 className="mt-2 text-base font-medium text-white">Crypto</h4>
+
+          <h4 className="mt-2 text-base font-medium text-white">
+            Crypto
+          </h4>
+
           <p className="mt-2 text-xs leading-5 text-zinc-400">
             Daily selected news from crypto and DeFi markets.
           </p>
