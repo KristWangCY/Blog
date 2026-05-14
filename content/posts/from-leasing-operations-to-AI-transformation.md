@@ -1,7 +1,7 @@
 ---
 title: "From Leasing Operations to AI Transformation"
 subtitle: "Enterprise AI Solution for Automotive Finance Workflow Automation."
-category: "Business Analytics Projects"
+category: "AI Projects"
 description: "A real-world experience building AI-driven customer servicing workflows within automotive finance and leasing operations."
 date: "2026-05-05"
 pinned: false

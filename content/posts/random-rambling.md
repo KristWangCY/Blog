@@ -105,3 +105,15 @@ I never feel down — in fact, I feel really motivated about my future.
 Never underestimate myself.
 
 ---
+
+## 14th May, 2026
+
+Donald Trump visited China with a business delegation that included the heads of Nvidia, Tesla, Meta, and other major companies.
+
+It’s truly an impressive scene — the leaders of China and the United States, the two most powerful countries in the world, sitting down peacefully to negotiate and communicate with each other.
+
+Moments like this make me wonder how wonderful the world could be if humanity really became one global village.
+
+Maybe we would have already gone even further than landing on the moon.
+
+Hope for world peace.

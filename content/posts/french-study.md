@@ -22,7 +22,7 @@ Vas-y!
 
 ---
 
-## Salutations (7th May, 2026)
+### Salutations (7th May, 2026)
 
 ![French Keyboard Layout](/images/french-france-french-windows-kblayout-unilingual-2021.png)
 
@@ -31,6 +31,10 @@ I am trying to get used to the French keyboard, it is annoying for sure.
 A Z and Q S
 
 M is , and ?
+
+For copy:
+
+à / â / æ / ç / é / è / ê / ë / î / ï / ô / œ / ù / û / ü / ÿ
 
 ---
 
@@ -95,7 +99,8 @@ See you soon. -> À bientôt.
 See you shortly. -> À tout à l'heure.
 
 ---
-### Count
+
+### Count (9th May, 2026)
 
 un, deux, trois, quatre, cinq, six, sept, huit, neuf, dix.
 
@@ -105,6 +110,99 @@ dix-sept, dix-huit, dix-neuf, vingt.
 
 Fun fact: They use vigesimal system.
 
+---
+
+### Days of weeks
+
+lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche.
+
+Mon jour préféré est samidi.
+
+---
+
+### Months (11th May, 2026)
+
+janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre.
+
+Mon mois préféré est mars.
+
+Jour(Day) / Mois(Month)
+
+---
+
+## The definite articles: (14th May, 2026)
+
+### Le: masculine
+
+Le cinéma - the cinema 
+
+Le sac - the bag 
+
+Le stylo - the pen 
+
+Le chocolat - the chocolate 
+
+Le ballon - the ballon 
+
+Le tableau - the painting 
+
+Le livre - the book 
+
+Le téléphone - the telephone 
+
+Le verre - the glass 
+
+Le garçon - the boy
+
+### La: feminine
+
+La tomate - the tomato
+
+La chaise - the chair 
+
+La voiture - the car 
+
+La cassette - the cassette 
+
+La carotte - the carrot
+
+La banane - the banana 
+
+La télévision - the television 
+
+La fille - the girl 
+
+La femme - the woman 
+
+### Les: plural
+
+Les ballons - the ballons 
+
+### L': begin with a "h" or "vowel"
+
+L'arbre - the tree 
+
+L' hôpital - the hospital
+
+L' homme - the man
+
+### Examples: 
+
+Le chat - La chatte (cat)
+
+L'angleterre (English)
+
+La france (France)
+
+La belgique (Belgium)
+
+Le japon (Japan)
+
+Le portugal (Portugal)
+
+### Pronounciation rules:
+
+End with d、t、s、x、p, usually silent.
 
 
 

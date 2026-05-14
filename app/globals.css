@@ -128,3 +128,7 @@
     @apply font-sans;
   }
 }
+.stock-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #27272a #020202;
+}

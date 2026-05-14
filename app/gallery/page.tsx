@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabase";
@@ -50,14 +48,14 @@ function GalleryContent() {
   const [selectedAlbumId, setSelectedAlbumId] = useState<string | null>(
     albumFromUrl
   );
+
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const [loading, setLoading] = useState(true);
-  const [isCreateOpen, setIsCreateOpen] = useState(false);
-  const [newAlbumTitle, setNewAlbumTitle] = useState("");
-  const [newAlbumDescription, setNewAlbumDescription] = useState("");
 
-  const selectedAlbum = albums.find((album) => album.id === selectedAlbumId);
+  const selectedAlbum = albums.find(
+    (album) => album.id === selectedAlbumId
+  );
 
   useEffect(() => {
     setSelectedAlbumId(albumFromUrl);
@@ -97,6 +95,7 @@ function GalleryContent() {
 
   function openAlbum(albumId: string) {
     setSelectedAlbumId(albumId);
+
     router.replace(
       `/gallery?album=${albumId}&from=${encodeURIComponent(from)}`
     );
@@ -104,48 +103,8 @@ function GalleryContent() {
 
   function backToAlbums() {
     setSelectedAlbumId(null);
+
     router.replace(`/gallery?from=${encodeURIComponent(from)}`);
-  }
-
-  async function handleCreateAlbum() {
-    const title = newAlbumTitle.trim();
-
-    if (!title) {
-      alert("Please enter an album name.");
-      return;
-    }
-
-    const { data, error } = await supabase
-      .from("albums")
-      .insert({
-        title,
-        description: newAlbumDescription.trim() || "New album",
-      })
-      .select()
-      .single();
-
-    if (error) {
-      alert(error.message);
-      return;
-    }
-
-    const newAlbum: Album = {
-      id: data.id,
-      title: data.title,
-      description: data.description,
-      photos: [],
-    };
-
-    setAlbums((prev) => [newAlbum, ...prev]);
-    setSelectedAlbumId(newAlbum.id);
-
-    router.replace(
-      `/gallery?album=${newAlbum.id}&from=${encodeURIComponent(from)}`
-    );
-
-    setNewAlbumTitle("");
-    setNewAlbumDescription("");
-    setIsCreateOpen(false);
   }
 
   return (
@@ -158,39 +117,21 @@ function GalleryContent() {
             <BackButton onClick={() => router.push(from)} />
           )}
 
-          <div className="flex items-end justify-between">
-            <div>
-              <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
-                Personal Gallery
+          <div>
+            <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
+              Personal Gallery
+            </p>
+
+            <h1 className="mt-3 text-5xl font-bold">
+              {selectedAlbum
+                ? selectedAlbum.title
+                : "Gallery"}
+            </h1>
+
+            {selectedAlbum && (
+              <p className="mt-4 max-w-xl text-zinc-400">
+                {selectedAlbum.description}
               </p>
-
-              <h1 className="mt-3 text-5xl font-bold">
-                {selectedAlbum ? selectedAlbum.title : "Gallery"}
-              </h1>
-
-              {selectedAlbum && (
-                <p className="mt-4 max-w-xl text-zinc-400">
-                  {selectedAlbum.description}
-                </p>
-              )}
-            </div>
-
-            {selectedAlbum ? (
-              <Link
-                href={`/upload?album=${selectedAlbum.id}&from=${encodeURIComponent(
-                  from
-                )}`}
-                className="rounded-full border border-zinc-700 px-5 py-2 text-sm text-zinc-300 transition hover:border-zinc-500 hover:bg-zinc-900"
-              >
-                Upload Photo
-              </Link>
-            ) : (
-              <button
-                onClick={() => setIsCreateOpen(true)}
-                className="rounded-full border border-zinc-700 px-5 py-2 text-sm text-zinc-300 transition hover:border-zinc-500 hover:bg-zinc-900"
-              >
-                + New Album
-              </button>
             )}
           </div>
         </div>
@@ -199,33 +140,58 @@ function GalleryContent() {
       {!selectedAlbum && (
         <section className="mx-auto max-w-7xl px-6 py-16">
           {loading ? (
-            <p className="text-zinc-400">Loading albums...</p>
+            <p className="text-zinc-400">
+              Loading albums...
+            </p>
           ) : albums.length === 0 ? (
             <div className="rounded-3xl border border-dashed border-zinc-700 p-20 text-center">
-              <p className="text-lg text-zinc-400">No albums yet</p>
+              <p className="text-lg text-zinc-400">
+                No albums yet
+              </p>
+
               <p className="mt-3 text-sm text-zinc-500">
-                Create your first album.
+                No albums available.
               </p>
             </div>
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {albums.map((album) => (
-                <button
-                  key={album.id}
-                  onClick={() => openAlbum(album.id)}
-                  className="rounded-3xl border border-zinc-800 bg-zinc-900 p-8 text-left transition hover:border-zinc-600"
-                >
-                  <h2 className="text-3xl font-semibold">{album.title}</h2>
+              {albums.map((album) => {
+                const coverPhoto = album.photos?.[0];
 
-                  <p className="mt-4 leading-7 text-zinc-400">
-                    {album.description}
-                  </p>
+                return (
+                  <button
+                    key={album.id}
+                    onClick={() => openAlbum(album.id)}
+                    className="group overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 text-left transition hover:border-zinc-600"
+                  >
+                    {coverPhoto ? (
+                      <img
+                        src={coverPhoto.image_url}
+                        alt={coverPhoto.title || album.title}
+                        className="h-[260px] w-full object-cover transition duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="flex h-[260px] items-center justify-center bg-zinc-950 text-zinc-600">
+                        No Cover
+                      </div>
+                    )}
 
-                  <p className="mt-10 text-sm uppercase tracking-[0.2em] text-zinc-500">
-                    {album.photos?.length || 0} Photos
-                  </p>
-                </button>
-              ))}
+                    <div className="p-8">
+                      <h2 className="text-3xl font-semibold">
+                        {album.title}
+                      </h2>
+
+                      <p className="mt-4 leading-7 text-zinc-400">
+                        {album.description}
+                      </p>
+
+                      <p className="mt-10 text-sm uppercase tracking-[0.2em] text-zinc-500">
+                        {album.photos?.length || 0} Photos
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           )}
         </section>
@@ -235,9 +201,12 @@ function GalleryContent() {
         <section className="mx-auto max-w-7xl px-6 py-16">
           {selectedAlbum.photos.length === 0 ? (
             <div className="rounded-3xl border border-dashed border-zinc-700 p-20 text-center">
-              <p className="text-lg text-zinc-400">No photos yet</p>
+              <p className="text-lg text-zinc-400">
+                No photos yet
+              </p>
+
               <p className="mt-3 text-sm text-zinc-500">
-                Upload your first photo into this album.
+                No photos available in this album.
               </p>
             </div>
           ) : (
@@ -245,73 +214,33 @@ function GalleryContent() {
               {selectedAlbum.photos.map((photo) => (
                 <button
                   key={photo.id}
-                  onClick={() => setSelectedImage(photo.image_url)}
+                  onClick={() =>
+                    setSelectedImage(photo.image_url)
+                  }
                   className="group overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 text-left transition hover:border-zinc-600"
                 >
-                  <div className="overflow-hidden">
-                    <Image
-                      src={photo.image_url}
-                      alt={photo.title || "Gallery photo"}
-                      width={1200}
-                      height={800}
-                      className="h-[320px] w-full object-cover transition duration-500 group-hover:scale-105"
-                    />
-                  </div>
+                  <img
+                    src={photo.image_url}
+                    alt={photo.title || "Gallery photo"}
+                    className="h-[320px] w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
 
                   <div className="p-5">
-                    <p className="text-sm leading-6 text-zinc-400">
-                      {photo.title || photo.description || "Untitled photo"}
+                    <p className="text-base font-medium text-white">
+                      {photo.title || "Untitled photo"}
                     </p>
+
+                    {photo.description && (
+                      <p className="mt-2 text-sm leading-6 text-zinc-400">
+                        {photo.description}
+                      </p>
+                    )}
                   </div>
                 </button>
               ))}
             </div>
           )}
         </section>
-      )}
-
-      {isCreateOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-6">
-          <div className="w-full max-w-lg rounded-3xl border border-zinc-800 bg-zinc-950 p-8">
-            <h2 className="text-3xl font-bold">New Album</h2>
-
-            <div className="mt-8 space-y-5">
-              <input
-                value={newAlbumTitle}
-                onChange={(e) => setNewAlbumTitle(e.target.value)}
-                placeholder="Album name"
-                className="w-full rounded-2xl border border-zinc-700 bg-black p-4 outline-none focus:border-indigo-500"
-              />
-
-              <textarea
-                value={newAlbumDescription}
-                onChange={(e) => setNewAlbumDescription(e.target.value)}
-                placeholder="Description"
-                className="min-h-[120px] w-full rounded-2xl border border-zinc-700 bg-black p-4 outline-none focus:border-indigo-500"
-              />
-            </div>
-
-            <div className="mt-8 flex justify-end gap-3">
-              <button
-                onClick={() => {
-                  setIsCreateOpen(false);
-                  setNewAlbumTitle("");
-                  setNewAlbumDescription("");
-                }}
-                className="rounded-full border border-zinc-700 px-5 py-2 text-sm text-zinc-300 hover:bg-zinc-900"
-              >
-                Cancel
-              </button>
-
-              <button
-                onClick={handleCreateAlbum}
-                className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-black hover:bg-zinc-200"
-              >
-                Create Album
-              </button>
-            </div>
-          </div>
-        </div>
       )}
 
       {selectedImage && (
@@ -326,15 +255,12 @@ function GalleryContent() {
             ×
           </button>
 
-          <div onClick={(e) => e.stopPropagation()}>
-            <Image
-              src={selectedImage}
-              alt="Large preview"
-              width={2000}
-              height={1500}
-              className="max-h-[90vh] w-auto rounded-2xl object-contain"
-            />
-          </div>
+          <img
+            src={selectedImage}
+            alt="Large preview"
+            className="max-h-[90vh] max-w-[90vw] rounded-2xl object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
       )}
     </main>

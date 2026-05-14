@@ -24,7 +24,7 @@ export default async function WorkBlogPage({
           "Finance",
           "Energy Projects",
           "Business Analytics Projects",
-          "AI",
+          "AI Projects",
           "Quant",
         ].includes(post.category)
     )

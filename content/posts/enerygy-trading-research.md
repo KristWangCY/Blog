@@ -1,7 +1,7 @@
 ---
-title: "Energy-Trading-Research"
+title: "Vehicle-to-Grid: When EVs Become Energy"
 category: "Energy Projects"
-description: "My understanding of energy trading, power markets, and the role of data in modern electricity systems."
+description: "Exploring how electric vehicles can interact with electricity markets through bidirectional charging and smart energy systems."
 date: "2026-05-08"
 pinned: false
 ---

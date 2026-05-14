@@ -52,28 +52,26 @@ export default function Home() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-
-            <Link
-              href="/blog/why-blog?from=home"
-              className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
-            >
-              Read Me
-            </Link> 
+              <Link
+                href="/blog/why-blog?from=home"
+                className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
+              >
+                Read Me
+              </Link>
 
               <Link
                 href="/about"
                 className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
               >
                 About Me
-              </Link> 
+              </Link>
 
               <Link
                 href="/features"
                 className="rounded-full border border-zinc-700 bg-black/30 px-6 py-3 backdrop-blur transition hover:border-zinc-500 hover:bg-zinc-900"
               >
                 Blog Feature Hub
-              </Link>              
-
+              </Link>
             </div>
           </div>
         </div>
