@@ -117,3 +117,19 @@ Moments like this make me wonder how wonderful the world could be if humanity re
 Maybe we would have already gone even further than landing on the moon.
 
 Hope for world peace.
+
+---
+
+## 15th May, 2026
+
+I find the job market in Ireland is disappointing. Luckily, I don't need to worry a lot about it because I currently have my savings and stocks to spend.
+
+But some of my friends are leaving Ireland, I feel very down about that.
+
+So I plan to have a long trip in next couples of weeks in Europe.
+
+And I'll also update my blog weekly.
+
+Hope everything will be alright.
+
+---
