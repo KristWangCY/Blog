@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
 （200字以内，分析新闻对市场、公司、行业或加密货币的潜在影响，并给出你的观察或投资角度）
 
 要求：
-- 使用中文
+- 使用英文
 - 不要输出 Markdown
 - 不要输出标题以外的额外内容
 - 保持专业、简洁、像 Bloomberg/机构研究摘要

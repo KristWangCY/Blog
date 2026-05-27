@@ -75,7 +75,7 @@ Because those are usually where real learning happens.
 
 ## 2. Building My Own Knowledge System
 
-Modern information is extremely fragmented.
+Modern information is extremely fragmented, especially under the circumstance of fast AI development.
 
 One day I might study AI agents. The next day I may work on on-chain analytics. Then suddenly spend hours researching market microstructure or energy trading systems.
 
