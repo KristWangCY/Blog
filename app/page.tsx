@@ -1,7 +1,39 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import AIBriefPanel from "@/components/ui/AIBriefPanel";
 
+type Job = {
+  title: string;
+  location: string | null;
+  url: string;
+  company: string;
+  first_seen_at: string;
+};
+
 export default function Home() {
+  const [latestJobs, setLatestJobs] = useState<Job[]>([]);
+  const [jobScanning, setJobScanning] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/jobs/latest")
+      .then((res) => res.json())
+      .then((data) => setLatestJobs(data.jobs || []))
+      .catch(() => setLatestJobs([]));
+  }, []);
+
+  async function handleJobWatchClick() {
+    try {
+      setJobScanning(true);
+      await fetch("/api/jobs/mastercard");
+      window.location.href = "/job-watch";
+    } catch {
+      setJobScanning(false);
+      alert("Failed to scan jobs. Please try again.");
+    }
+  }
+
   const blogCategories = [
     {
       title: "Work",
@@ -25,9 +57,7 @@ export default function Home() {
       <section className="relative overflow-hidden bg-black">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{
-            backgroundImage: "url('/hero-bg.png')",
-          }}
+          style={{ backgroundImage: "url('/hero-bg.png')" }}
         />
 
         <div className="absolute inset-0 bg-black/5" />
@@ -92,20 +122,71 @@ export default function Home() {
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           <AIBriefPanel />
 
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5 transition hover:border-zinc-600 hover:bg-zinc-900/80">
-            <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
-              Market Watch
-            </p>
+<div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6">
+  <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">
+    Job Market Watch
+  </p>
 
-            <h3 className="mt-3 text-lg font-medium text-white">
-              Crypto & Quant Signals
-            </h3>
+  <h3 className="mt-4 text-2xl font-semibold leading-snug text-white">
+    Monitor real company hiring signals.
+  </h3>
 
-            <p className="mt-3 text-sm leading-6 text-zinc-400">
-              Key movements, sentiment changes, and research ideas from daily
-              news.
-            </p>
+  <p className="mt-3 text-sm leading-6 text-zinc-400">
+    Track real-time hiring activities in Dublin.
+  </p>
+
+  <button
+    type="button"
+    onClick={handleJobWatchClick}
+    disabled={jobScanning}
+    className="mt-6 w-full rounded-2xl border border-zinc-800 bg-black/30 p-4 text-left transition hover:border-zinc-600 hover:bg-zinc-900/50 disabled:cursor-wait disabled:opacity-70"
+  >
+    <div className="mb-4 flex items-center justify-between">
+      <div>
+        <p className="text-base font-medium text-white">
+          Mastercard
+        </p>
+
+        <p className="text-sm text-zinc-500">
+          Dublin, Ireland
+        </p>
+      </div>
+
+      <span className="rounded-lg bg-green-500/10 px-3 py-1 text-xs text-green-400">
+        {jobScanning ? "Scanning" : "Live"}
+      </span>
+    </div>
+
+    <div className="space-y-3">
+      {latestJobs.length === 0 ? (
+        <p className="text-sm leading-6 text-zinc-500">
+          Click Mastercard panel to scan live jobs.
+        </p>
+      ) : (
+        latestJobs.map((job) => (
+          <div
+            key={job.url}
+            className="flex items-center justify-between rounded-xl border border-zinc-800 px-4 py-3"
+          >
+            <div>
+              <p className="text-sm font-medium text-white">
+                {job.title}
+              </p>
+
+              <p className="mt-1 text-xs text-zinc-500">
+                {job.location || "Dublin, Ireland"}
+              </p>
+            </div>
+
+            <span className="text-zinc-500">
+              →
+            </span>
           </div>
+        ))
+      )}
+    </div>
+  </button>
+</div>
 
           <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5 transition hover:border-zinc-600 hover:bg-zinc-900/80">
             <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
@@ -118,8 +199,8 @@ export default function Home() {
 
             <p className="mt-3 text-sm leading-6 text-zinc-400">
               I developed some features to capture US stock and crypto news
-              with LLM APIs, and also monitor the weather and give advice
-              with AI.
+              with LLM APIs, and also monitor the weather and give advice with
+              AI.
             </p>
           </div>
         </div>

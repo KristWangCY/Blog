@@ -1,7 +1,7 @@
 ---
-title: "Leveraging Blockchain Analytics for Quantitative Insights in Decentralized Finance (DeFi) Markets"
+title: "Template"
 category: "Finance"
-description: "My master’s dissertation explores Ethereum on-chain analytics, DeFi market dynamics, machine learning, and quantitative trading research."
+description: "Template"
 date: "2026-05-14"
 pinned: false
 ---
