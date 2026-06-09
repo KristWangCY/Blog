@@ -761,4 +761,6 @@ From your perspective, what skills or qualities differentiate someone who perfor
 How would you describe the culture and working style of the team?
 您会怎么描述团队文化和氛围？
 
-责任心/琐碎但容不得马虎/主动思考/抗挫折能力
+责任心/琐碎但容不得马虎/主动思考/
+
+*** 19. Acheivement ***
