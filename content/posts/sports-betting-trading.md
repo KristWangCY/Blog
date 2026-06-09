@@ -198,25 +198,34 @@ Preparation-15
 Why did you move from Materials Science and Engineering to Business Analytics? - 转专业
 Preparation-16
 How do you learn new things? - 快速学习
+Preparation-17
+What achievement best represents who you are? - 成就
+Preparation-18
+General - 具体知识
+Preparation-19
+Personal - 个人习惯
 
 
-*** 1. Tell me about yourself: ***
+
+***1. Tell me about yourself:***
 
 Thank you for having me today.
 
 My name is Chenyu Wang, and I recently graduated from Trinity College Dublin with an MSc in Business Analytics.
 
-Over the past few years, I have developed experience in sports trading, risk management, and data analytics through roles in sports betting, cryptocurrency trading, and financial services.
+My background combines sports trading, risk management, and data analytics across the sports betting, cryptocurrency, and financial services industries.
+
+Originally, I studied Materials Science and Engineering. During my undergraduate studies, I was awarded a full scholarship to study at University College Cork, where I had the opportunity to take courses in physics, chemistry, and computer science. That experience broadened my interests and introduced me to data analysis, programming, and quantitative problem-solving. It was one of the key reasons I later decided to pursue a master's degree in Business Analytics at Trinity College Dublin.
 
 Most recently, I worked as a Sports Trading Analyst at Flutter UK & Ireland, where I monitored sportsbook activity, analysed customer betting behaviour, tracked market exposure, and supported real-time risk-management decisions across multiple sporting events.
 
 Before that, I worked as a Crypto Lead Trader at OKX, where I managed spot and derivatives trading strategies across cryptocurrency markets. My responsibilities included monitoring market movements, managing portfolio exposure, analysing profitability, and adjusting trading strategies based on changing market conditions. Working in highly volatile markets helped me develop strong risk-management skills and the ability to make informed decisions under pressure.
 
-Earlier in my career, I worked as a Business Analyst at BMW China Leasing. In that role, I analysed large volumes of customer and financial data using SQL, Python, and Excel, built automated reporting processes, and developed customer-behaviour and profitability analyses to support business decision-making. This experience strengthened my analytical mindset and gave me a solid foundation in data-driven problem solving.
+Earlier in my career, I worked as a Business Analyst at BMW China Leasing. In that role, I analysed large volumes of customer and financial data using SQL, Python, and Excel, built automated reporting processes, and developed customer-behaviour and profitability analyses to support business decision-making.
 
-Across these roles, I have developed a strong interest in trading, risk management, and data-driven decision-making. What particularly attracts me to Penn Interactive is the opportunity to combine sports, trading, and risk management in a fast-paced environment. Given my experience in sportsbook operations, trading, and analytics, I believe this role is a natural next step in my career and an excellent fit for my skills and long-term goals.
+Across these experiences, I have developed a strong interest in trading, risk management, and data-driven decision-making. What particularly attracts me to Penn Interactive is the opportunity to combine sports, trading, and risk management in a fast-paced environment. Given my experience in sportsbook operations, trading, and analytics, I believe this role is a natural next step in my career and an excellent fit for my skills and long-term goals.
 
-*** 2. Why Penn? / Why do you want to work for us? ***
+***2. Why Penn? / Why do you want to work for us?***
 
 There are three main reasons why I am interested in Penn Interactive.
 
@@ -228,7 +237,7 @@ Finally, Penn Interactive is one of the most exciting operators in North America
 
 Given my background in sportsbook operations and trading, I believe Penn Interactive would be an excellent place for me to continue developing my career.
 
-*** 3. Why this role? ***
+***3. Why this role?***
 
 I am interested in this role because it brings together three areas that I have particularly enjoyed throughout my previous experiences: trading, risk management, and data-driven decision-making.
 
@@ -240,7 +249,7 @@ What excites me about this role is that it goes beyond traditional risk manageme
 
 Given my experience in sportsbook operations, trading, and analytics, I see this role as a natural next step in my career and an opportunity to continue developing within the sports betting industry.
 
-*** 4.Describe a team conflict and how you resolved it ***
+***4. Describe a team conflict and how you resolved it***
 
 One example that comes to mind was during my time at BMW China Leasing.
 
@@ -254,7 +263,7 @@ This allowed the finance team to gain access to the information they needed with
 
 From that experience, I learned that most team conflicts are not really about people disagreeing with each other personally. They are often caused by different priorities. By understanding each side's perspective and focusing on a practical solution, it is usually possible to find common ground.
 
-*** 5.Where do you see yourself in five years? ***
+***5. Where do you see yourself in five years?***
 
 In the short term, my goal is to deepen my understanding of sportsbook operations, trading, and risk management. Although I already have experience in sportsbook analytics and trading environments, I believe there is still a lot to learn from experienced traders and risk professionals.
 
@@ -262,7 +271,7 @@ Over the next few years, I would like to take on greater responsibility, contrib
 
 In five years, I hope to be a well-rounded sportsbook trading and risk professional who is trusted to manage significant exposure, support key business decisions, and contribute to the long-term success of the organisation. I am particularly interested in becoming someone who combines strong analytical skills with practical trading and risk-management expertise.
 
-*** 6.Tell me about a time you worked in a team ***
+***6. Tell me about a time you worked in a team***
 
 One example that comes to mind was during my time as a Sports Trading Analyst at Flutter.
 
@@ -276,7 +285,7 @@ By working together and sharing information quickly, we were able to assess the 
 
 This experience reinforced the importance of communication and teamwork in a fast-paced environment. Everyone had different responsibilities, but by collaborating effectively and focusing on a common goal, we were able to make informed decisions and achieve a positive outcome.
 
-*** 7.What is your biggest weakness? - 缺点 ***
+***7. What is your biggest weakness? - 缺点***
 
 One area I have worked on improving is that earlier in my career, I sometimes spent too much time analysing information before making a decision.
 
@@ -286,7 +295,7 @@ Through my experience at OKX and Flutter, I learned that decisions often need to
 
 It is still something I continue to work on, but I believe I have made significant progress and now feel much more comfortable making informed decisions in fast-paced environments.
 
-*** 8.Tell me about a time you showed leadership - leadership ***
+***8. Tell me about a time you showed leadership - leadership***
 
 One example of leadership that comes to mind was during my time as a Crypto Lead Trader at OKX.
 
@@ -298,7 +307,7 @@ By improving visibility across positions and helping the team focus on the most 
 
 What I learned from this experience is that leadership is not necessarily about having a formal title. It is about taking responsibility, helping others make better decisions, and contributing to a positive outcome for the team.
 
-*** 9.Tell me about a difficult problem you solved - 解决困难/问题 ***
+***9. Tell me about a difficult problem you solved - 解决困难/问题***
 
 One difficult problem I faced during my time at Flutter involved a sudden increase in betting activity on a particular sporting event.
 
@@ -312,7 +321,7 @@ Working together, we reviewed the situation, assessed the potential impact, and 
 
 This experience taught me the importance of staying calm under pressure, analysing data quickly, and communicating findings clearly when dealing with time-sensitive risk events.
 
-*** 10.Tell me about a failure or setback - 解决困难/问题 ***
+***10. Tell me about a failure or setback - 解决困难/问题***
 
 One difficult problem I faced during my time at Flutter involved a sudden increase in betting activity on a particular sporting event.
 
@@ -326,7 +335,7 @@ Working together, we reviewed the situation, assessed the potential impact, and 
 
 This experience taught me the importance of staying calm under pressure, analysing data quickly, and communicating findings clearly when dealing with time-sensitive risk events.
 
-*** 11.Tell me about a time you worked under pressure - 压力 ***
+***11. Tell me about a time you worked under pressure - 压力***
 
 One example that stands out was during my time as a Crypto Lead Trader at OKX.
 
@@ -340,7 +349,7 @@ Despite the pressure and uncertainty, I remained calm, followed a structured ris
 
 This experience taught me the importance of staying composed under pressure, prioritising key information, and making disciplined decisions in fast-moving environments.
 
-*** 12.Tell me about a time you used data to make a decision - 数据解决问题/AI例子 ***
+***12. Tell me about a time you used data to make a decision - 数据解决问题/AI例子***
 
 One example that comes to mind was during my time as a Sports Trading Analyst at Flutter.
 
@@ -354,7 +363,7 @@ As a result, the team was able to review the exposure, make informed risk-manage
 
 This experience reinforced the importance of using data rather than assumptions when making decisions, particularly in fast-paced trading environments where risk levels can change quickly.
 
-*** 13.Tell me about a time you managed multiple tasks in a fast-paced environment - 多任务 ***
+***13. Tell me about a time you managed multiple tasks in a fast-paced environment - 多任务***
 
 One example that comes to mind was during my time as a Sports Trading Analyst at Flutter during a busy sporting weekend.
 
@@ -368,7 +377,7 @@ By staying organised and focusing on priorities, I was able to complete all crit
 
 This experience taught me the importance of prioritisation, communication, and remaining calm when managing multiple responsibilities in a fast-paced environment.
 
-*** 14.What is your understanding of Sportsbook Risk? - 对Sportsbook Risk理解 ***
+***14. What is your understanding of Sportsbook Risk? - 对Sportsbook Risk理解***
 
 My understanding of sportsbook risk is that it involves identifying, monitoring, and managing the financial risks associated with customer betting activity.
 
@@ -382,7 +391,7 @@ Sportsbook risk also involves making informed decisions based on data. This can 
 
 Ultimately, I see sportsbook risk as the balance between protecting the business from excessive exposure while continuing to offer an attractive betting experience for customers.
 
-*** 15. Why did you move from Materials Science and Engineering to Business Analytics? - 转专业 ***
+***15. Why did you move from Materials Science and Engineering to Business Analytics? - 转专业***
 I chose to move from Materials Science and Engineering to Business Analytics because, during my engineering studies, I became increasingly interested in data analysis, problem-solving, and decision-making.
 
 Engineering taught me how to think logically, work with quantitative information, and approach problems in a structured way. However, I found myself particularly interested in the analytical side of projects, especially when data was being used to understand patterns, evaluate outcomes, and support decisions.
@@ -393,7 +402,7 @@ That decision ultimately led me to roles in business analytics, trading, and spo
 
 The analytical mindset I developed through engineering continues to help me today, particularly in trading and risk-management environments where structured thinking and quantitative analysis are essential.
 
-*** 16.How do you learn new things? - 快速学习 ***
+***16. How do you learn new things? - 快速学习***
 I learn new things by combining structured learning with hands-on application.
 
 When I encounter a new topic, I first focus on understanding the fundamentals through documentation, training materials, online courses, or discussions with experienced colleagues. I like to build a strong foundation before moving on to more advanced concepts.
@@ -406,4 +415,110 @@ Similarly, when I joined Flutter, I needed to develop a deeper understanding of 
 
 Overall, I am naturally curious and enjoy learning. I find that the most effective approach is to understand the theory, apply it in practice, and continuously improve through feedback and experience.
 
+***17. What achievement best represents who you are? - 成就***
+One of my biggest achievements was my experience as a Crypto Lead Trader at OKX.
 
+When I first moved into cryptocurrency trading, I had to learn an entirely new market, including spot trading, derivatives, risk management, and market structure. The cryptocurrency market is highly volatile and operates 24/7, which creates a very challenging environment for traders.
+
+Through continuous learning, disciplined risk management, and daily market analysis, I was able to develop and manage trading strategies while maintaining strong risk controls. Over time, I achieved a trading win rate of close to 70% while operating in highly volatile market conditions.
+
+What makes this achievement particularly meaningful to me is not just the performance itself, but the process behind it. It required analytical thinking, discipline, continuous learning, and the ability to make informed decisions under pressure.
+
+I believe the skills I developed through that experience—especially risk management, exposure monitoring, and decision-making in fast-moving environments—are highly relevant to a Sportsbook Risk Trader role and have helped shape the professional I am today.
+
+
+***18. General - 具体知识***
+
+***Why are you leaving Flutter? 为什么离开Flutter？***
+
+I have enjoyed my time at Flutter and learned a great deal about sportsbook operations and risk management. 
+However, I am looking for an opportunity to take on broader responsibilities and continue developing my career within sportsbook risk and trading. 
+Penn Interactive's growth, scale, and focus on innovation make it a very attractive next step for me.
+
+***What is a Sharp Bettor?***
+
+A sharp bettor is an experienced and knowledgeable customer who consistently makes profitable betting decisions. Sharp bettors often identify value in odds before the market adjusts and are generally considered more informed than average recreational bettors.
+
+Sharp Bettor（专业玩家）是指具备丰富经验和专业知识、能够长期稳定盈利的投注者。他们通常能够在市场调整赔率之前发现价值投注机会，因此比普通娱乐型玩家更具信息优势和分析能力。
+
+***What is Exposure?***
+
+Exposure refers to the financial risk a sportsbook faces if a particular outcome occurs. It represents the sportsbook's level of vulnerability based on how customers have placed their bets.
+
+Exposure（风险敞口）是指当某个比赛结果发生时，Sportsbook所面临的潜在风险程度。它反映了由于客户投注分布不均而导致公司承担的风险。
+
+Example:
+
+Liverpool Win
+90% of all bets
+
+→ High Exposure
+
+如果90%的投注都压Liverpool获胜，那么Liverpool赢球时Sportsbook将面临较大的风险敞口。
+
+***What is Liability?***
+
+Liability is the actual amount of money a sportsbook would need to pay out if a particular outcome wins. It is the financial obligation associated with a betting outcome.
+
+Liability（赔付责任）是指当某个投注结果发生时，Sportsbook需要实际支付给客户的金额。它代表公司在某一结果上的具体赔付义务。
+
+Example:
+
+Total Bets on Liverpool:
+£100,000
+
+Potential Payout:
+£180,000
+
+Liability:
+£180,000
+
+如果Liverpool获胜，Sportsbook需要支付£180,000给客户，这就是Liability。
+
+***What's the Difference Between Exposure and Liability?***
+
+Exposure and liability are closely related, but they are not the same.
+
+Exposure refers to the overall level of risk a sportsbook faces on a particular outcome.
+Liability refers to the specific amount of money the sportsbook may need to pay out if that outcome occurs.
+
+In simple terms, exposure measures the risk, while liability measures the potential payout.
+
+Exposure和Liability密切相关，但含义不同。
+
+Exposure（风险敞口）：描述Sportsbook在某个结果上的风险程度。
+Liability（赔付责任）：描述该结果发生时Sportsbook需要实际支付的金额。
+
+简单理解：
+
+Exposure = 风险有多大
+
+Liability = 具体要赔多少钱
+
+***19. Personal - 个人习惯***
+***What sports do you follow?***
+NBA,
+I primarily follow basketball, especially the NBA. I enjoy both watching games and analysing team performance, player statistics, and market expectations.
+
+Recently, I have been closely following the 2026 NBA Finals between the New York Knicks and the San Antonio Spurs. It has been particularly interesting to see how public sentiment, team performance, and market expectations evolve throughout the series.
+
+I also follow major football competitions such as the Premier League, but basketball is definitely the sport I follow most closely.
+
+***NBA details***
+Personally, I think the Knicks are slightly favoured by the betting market at the moment, which is understandable given their 2-0 lead in the series. However, I actually like the Spurs' chances more than the market seems to.
+
+I've been a Spurs fan since the Duncan, Parker, and Ginóbili era, and I've really enjoyed watching the current team built around Wembanyama. What impresses me most is that they managed to eliminate a very strong Oklahoma City Thunder team to reach the Finals.
+
+From a sportsbook perspective, what's interesting is that public sentiment and true probability are not always the same thing. Many bettors may focus heavily on the Knicks' series lead, while others may believe the market is underestimating the Spurs' ability to adjust and compete.
+
+That's one reason I find sports betting fascinating—the challenge is not just understanding the sport itself, but understanding how customer sentiment, betting activity, and market expectations interact.
+
+***the Premier League details***
+For football, I support Arsenal F.C.. Since moving to London, I've had the opportunity to experience the football culture here firsthand. One particularly memorable experience was attending the Arsenal celebration parade, which gave me a much deeper appreciation for the connection between clubs, supporters, and sporting events.
+
+***Do you bet yourself?***
+Yes, occasionally and responsibly.
+
+I view betting primarily as a way to better understand sportsbook products, customer behaviour, and market dynamics rather than as a source of income.
+
+Having experience from a customer's perspective helps me understand how odds, promotions, and market movements influence betting decisions.
