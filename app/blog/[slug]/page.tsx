@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
@@ -19,6 +20,31 @@ type BlogPageProps = {
   }>;
 };
 
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+
+  if (!post) {
+    return { title: "Post not found" };
+  }
+
+  return {
+    title: post.title,
+    description: post.description,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.description,
+      publishedTime: post.date,
+    },
+  };
+}
+
 export default async function BlogPostPage({
   params,
 }: BlogPageProps) {
@@ -37,6 +63,7 @@ export default async function BlogPostPage({
   const switchSlug = isChinese
     ? slug.replace("-cn", "")
     : `${slug}-cn`;
+  const translatedPost = getPostBySlug(switchSlug);
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -49,24 +76,26 @@ export default async function BlogPostPage({
           <BackButton />
 
         {/* Language Switch */}
-        <Link
-          href={`/blog/${switchSlug}`}
-          replace
-          className="
-            rounded-full
-            border
-            border-zinc-700
-            px-4
-            py-2
-            text-sm
-            text-zinc-300
-            transition
-            hover:border-white
-            hover:text-white
-          "
-        >
-          {isChinese ? "English" : "中文"}
-        </Link>
+        {translatedPost && (
+          <Link
+            href={`/blog/${switchSlug}`}
+            replace
+            className="
+              rounded-full
+              border
+              border-zinc-700
+              px-4
+              py-2
+              text-sm
+              text-zinc-300
+              transition
+              hover:border-white
+              hover:text-white
+            "
+          >
+            {isChinese ? "English" : "中文"}
+          </Link>
+        )}
 
         </div>
 

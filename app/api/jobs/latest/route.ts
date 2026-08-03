@@ -3,7 +3,7 @@ import { checkRateLimit } from "@/lib/api-security";
 import { fetchMastercardJobs } from "@/lib/jobs";
 
 export async function GET(request: Request) {
-  const rateLimit = checkRateLimit(request, "mastercard-jobs", 60, 60 * 60 * 1000);
+  const rateLimit = checkRateLimit(request, "latest-jobs", 60, 60 * 60 * 1000);
 
   if (!rateLimit.allowed) {
     return NextResponse.json(
@@ -16,24 +16,19 @@ export async function GET(request: Request) {
   }
 
   try {
-    const jobs = await fetchMastercardJobs();
+    const jobs = (await fetchMastercardJobs()).slice(0, 5);
 
     return NextResponse.json({
-      company: "Mastercard",
-      location: "Dublin",
-      source: "mastercard_workday",
-      scanned_at: new Date().toISOString(),
-      found: jobs.length,
+      updated_at: new Date().toISOString(),
+      total: jobs.length,
       jobs,
     });
   } catch (error) {
-    console.error("MASTERCARD_JOBS_ERROR:", error);
+    console.error("LATEST_JOBS_ERROR:", error);
 
     return NextResponse.json(
-      {
-        error: "Unexpected error while scanning Mastercard jobs",
-      },
-      { status: 500 }
+      { error: "Failed to fetch latest jobs", jobs: [] },
+      { status: 502 }
     );
   }
 }

@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import remarkBreaks from "remark-breaks";

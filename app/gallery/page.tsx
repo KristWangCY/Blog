@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 import BackButton from "@/components/ui/BackButton";
 
@@ -45,65 +46,61 @@ function GalleryContent() {
   const albumFromUrl = searchParams.get("album");
 
   const [albums, setAlbums] = useState<Album[]>([]);
-  const [selectedAlbumId, setSelectedAlbumId] = useState<string | null>(
-    albumFromUrl
-  );
-
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const [loading, setLoading] = useState(true);
 
   const selectedAlbum = albums.find(
-    (album) => album.id === selectedAlbumId
+    (album) => album.id === albumFromUrl
   );
 
   useEffect(() => {
-    setSelectedAlbumId(albumFromUrl);
-  }, [albumFromUrl]);
+    let cancelled = false;
 
-  useEffect(() => {
-    fetchAlbums();
-  }, []);
-
-  async function fetchAlbums() {
-    setLoading(true);
-
-    const { data, error } = await supabase
-      .from("albums")
-      .select(`
-        id,
-        title,
-        description,
-        photos (
+    async function loadAlbums() {
+      const { data, error } = await supabase
+        .from("albums")
+        .select(`
           id,
           title,
           description,
-          image_url
-        )
-      `)
-      .order("created_at", { ascending: false });
+          photos (
+            id,
+            title,
+            description,
+            image_url
+          )
+        `)
+        .order("created_at", { ascending: false });
 
-    if (error) {
-      alert(error.message);
+      if (cancelled) {
+        return;
+      }
+
+      if (error) {
+        console.error("GALLERY_ERROR:", error);
+        setAlbums([]);
+      } else {
+        setAlbums((data as Album[]) || []);
+      }
+
       setLoading(false);
-      return;
     }
 
-    setAlbums((data as Album[]) || []);
-    setLoading(false);
-  }
+    void loadAlbums();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   function openAlbum(albumId: string) {
-    setSelectedAlbumId(albumId);
-
     router.replace(
       `/gallery?album=${albumId}&from=${encodeURIComponent(from)}`
     );
   }
 
   function backToAlbums() {
-    setSelectedAlbumId(null);
-
     router.replace(`/gallery?from=${encodeURIComponent(from)}`);
   }
 
@@ -111,7 +108,7 @@ function GalleryContent() {
     <main className="min-h-screen bg-black text-white">
       <section className="border-b border-zinc-800 px-6 py-10">
         <div className="mx-auto max-w-7xl">
-          {selectedAlbumId ? (
+          {albumFromUrl ? (
             <BackButton onClick={backToAlbums} />
           ) : (
             <BackButton onClick={() => router.push(from)} />
@@ -165,11 +162,15 @@ function GalleryContent() {
                     className="group overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 text-left transition hover:border-zinc-600"
                   >
                     {coverPhoto ? (
-                      <img
-                        src={coverPhoto.image_url}
-                        alt={coverPhoto.title || album.title}
-                        className="h-[260px] w-full object-cover transition duration-500 group-hover:scale-105"
-                      />
+                      <div className="relative h-[260px] w-full overflow-hidden">
+                        <Image
+                          src={coverPhoto.image_url}
+                          alt={coverPhoto.title || album.title}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                          className="object-cover transition duration-500 group-hover:scale-105"
+                        />
+                      </div>
                     ) : (
                       <div className="flex h-[260px] items-center justify-center bg-zinc-950 text-zinc-600">
                         No Cover
@@ -219,11 +220,15 @@ function GalleryContent() {
                   }
                   className="group overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 text-left transition hover:border-zinc-600"
                 >
-                  <img
-                    src={photo.image_url}
-                    alt={photo.title || "Gallery photo"}
-                    className="h-[320px] w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
+                  <div className="relative h-[320px] w-full overflow-hidden">
+                    <Image
+                      src={photo.image_url}
+                      alt={photo.title || "Gallery photo"}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                    />
+                  </div>
 
                   <div className="p-5">
                     <p className="text-base font-medium text-white">
@@ -249,18 +254,26 @@ function GalleryContent() {
           onClick={() => setSelectedImage(null)}
         >
           <button
+            type="button"
+            aria-label="Close image preview"
             className="absolute right-6 top-6 text-4xl text-white hover:text-zinc-400"
             onClick={() => setSelectedImage(null)}
           >
             ×
           </button>
 
-          <img
-            src={selectedImage}
-            alt="Large preview"
-            className="max-h-[90vh] max-w-[90vw] rounded-2xl object-contain"
+          <div
+            className="relative h-[90vh] w-[90vw]"
             onClick={(e) => e.stopPropagation()}
-          />
+          >
+            <Image
+              src={selectedImage}
+              alt="Large preview"
+              fill
+              sizes="90vw"
+              className="rounded-2xl object-contain"
+            />
+          </div>
         </div>
       )}
     </main>

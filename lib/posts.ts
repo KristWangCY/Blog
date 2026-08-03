@@ -11,6 +11,7 @@ export type Post = {
   date: string;
   content: string;
   pinned?: boolean;
+  draft?: boolean;
 };
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
@@ -40,9 +41,11 @@ export function getAllPosts(): Post[] {
         description: data.description || "",
         date: data.date || "",
         pinned: data.pinned ?? false,
+        draft: data.draft ?? false,
         content,
       };
     })
+    .filter((post) => !post.draft)
     .sort((a, b) => {
       if (a.pinned && !b.pinned) return -1;
       if (!a.pinned && b.pinned) return 1;
@@ -65,6 +68,10 @@ export function getPostBySlug(slug: string): Post | null {
 
   const { data, content } = matter(fileContents);
 
+  if (data.draft) {
+    return null;
+  }
+
   return {
     slug,
     title: data.title || "Untitled",
@@ -73,6 +80,7 @@ export function getPostBySlug(slug: string): Post | null {
     description: data.description || "",
     date: data.date || "",
     pinned: data.pinned ?? false,
+    draft: false,
     content,
   };
 }

@@ -16,7 +16,9 @@ export type Feature = {
 };
 
 export function getAllFeatures(): Feature[] {
-  const fileNames = fs.readdirSync(featuresDirectory);
+  const fileNames = fs
+    .readdirSync(featuresDirectory)
+    .filter((fileName) => fileName.endsWith(".md"));
 
   const features = fileNames.map((fileName) => {
     const slug = fileName.replace(".md", "");
@@ -42,7 +44,7 @@ export function getAllFeatures(): Feature[] {
     };
   });
 
-  return features;
+  return features.sort((a, b) => a.title.localeCompare(b.title));
 }
 
 export function getFeatureBySlug(

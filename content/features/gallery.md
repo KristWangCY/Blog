@@ -1,14 +1,14 @@
 ---
 title: Personal Gallery
-description: A private and public visual archive built for photography, memories, travel moments, and curated personal collections.
+description: A visual archive for photography, memories, travel moments, and curated public collections.
 tag: Visual Archive
 ---
 
 Personal Gallery is a cloud-based photo archive integrated directly into this website.
 
-The system is designed to organize albums, preserve memories, and manage both public and password-protected collections in a clean and minimal interface.
+The public gallery organizes selected albums and photos in a clean, minimal interface.
 
-Photos are stored securely using Supabase Storage, allowing selected albums to remain publicly accessible while keeping private collections protected through encrypted access.
+Photos are stored using Supabase Storage. The browser uses the public Supabase client, so database Row Level Security policies must ensure that only intentionally public albums and photos are returned. Private collections should remain inaccessible to the anonymous role.
 
 The gallery serves as a long-term visual archive for travel, photography, daily moments, and personal documentation.
 

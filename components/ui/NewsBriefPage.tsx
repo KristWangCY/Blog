@@ -11,6 +11,7 @@ type NewsItem = {
   source: string;
   link: string;
   publishedAt: string;
+  summary: string;
 };
 
 type Props = {
@@ -30,12 +31,23 @@ export default function NewsBriefPage({
   const [news, setNews] = useState<NewsItem[]>([]);
   const [analysisMap, setAnalysisMap] = useState<Record<string, string>>({});
   const [loadingMap, setLoadingMap] = useState<Record<string, boolean>>({});
+  const [newsError, setNewsError] = useState("");
 
   useEffect(() => {
     fetch(`/api/news?category=${category}`)
-      .then((res) => res.json())
-      .then((data) => setNews(data.news || []))
-      .catch((err) => console.error("Failed to fetch news:", err));
+      .then(async (res) => {
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || "Failed to fetch news.");
+        }
+
+        setNews(data.news || []);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch news:", error);
+        setNewsError("News is temporarily unavailable. Please try again later.");
+      });
   }, [category]);
 
   async function analyzeNews(item: NewsItem) {
@@ -56,6 +68,10 @@ export default function NewsBriefPage({
 
       const data = await res.json();
 
+      if (!res.ok) {
+        throw new Error(data.analysis || "Failed to analyse this news.");
+      }
+
       setAnalysisMap((prev) => ({
         ...prev,
         [item.id]: data.analysis || "No analysis available.",
@@ -65,7 +81,8 @@ export default function NewsBriefPage({
 
       setAnalysisMap((prev) => ({
         ...prev,
-        [item.id]: "Failed to analyse this news.",
+        [item.id]:
+          error instanceof Error ? error.message : "Failed to analyse this news.",
       }));
     } finally {
       setLoadingMap((prev) => ({ ...prev, [item.id]: false }));
@@ -101,6 +118,12 @@ export default function NewsBriefPage({
         <p className="mt-8 text-center text-zinc-400">{subtitle}</p>
 
         {/* NEWS */}
+        {newsError && (
+          <p className="mt-12 rounded-2xl border border-red-500/20 bg-red-500/5 p-5 text-sm text-red-300">
+            {newsError}
+          </p>
+        )}
+
         <div className="mt-12 grid gap-5">
           {news.map((item) => (
             <article
@@ -125,6 +148,12 @@ export default function NewsBriefPage({
               <h2 className="mt-2 text-xl font-medium text-white">
                 {item.title}
               </h2>
+
+              {item.summary && (
+                <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-400">
+                  {item.summary}
+                </p>
+              )}
 
               <div className="mt-4 flex flex-wrap gap-4">
                 <a

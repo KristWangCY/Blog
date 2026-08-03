@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-type Chunk = {
+export type Chunk = {
   source: string;
   content: string;
 };
@@ -24,16 +24,34 @@ export function loadKnowledgeBase(): Chunk[] {
 export function retrieveContext(question: string, topK = 3): Chunk[] {
   const docs = loadKnowledgeBase();
 
-  const queryWords = question
-    .toLowerCase()
-    .split(/\s+/)
-    .filter((word) => word.length > 2);
+  const aliases: Record<string, string> = {
+    项目: "projects project",
+    技能: "skills programming technologies",
+    经历: "experience career work",
+    工作: "career work experience",
+    职业: "career goals",
+    论文: "dissertation research",
+    交易: "trading quantitative finance",
+    教育: "education academic university",
+    关于: "about background",
+  };
+
+  const expandedQuestion = Object.entries(aliases).reduce(
+    (result, [term, expansion]) =>
+      question.includes(term) ? `${result} ${expansion}` : result,
+    question.toLowerCase()
+  );
+
+  const queryWords = Array.from(
+    new Set(expandedQuestion.match(/[a-z0-9]{3,}/g) ?? [])
+  );
 
   const scored = docs.map((doc) => {
     const text = doc.content.toLowerCase();
 
     const score = queryWords.reduce((total, word) => {
-      return total + (text.includes(word) ? 1 : 0);
+      const matches = text.match(new RegExp(`\\b${word}\\b`, "g"));
+      return total + Math.min(matches?.length ?? 0, 5);
     }, 0);
 
     return {
@@ -42,8 +60,10 @@ export function retrieveContext(question: string, topK = 3): Chunk[] {
     };
   });
 
-  return scored
-    .sort((a, b) => b.score - a.score)
-    .slice(0, topK)
+  const ranked = scored.sort((a, b) => b.score - a.score);
+  const matches = ranked.filter((doc) => doc.score > 0);
+
+  return (matches.length > 0 ? matches : ranked)
+    .slice(0, Math.max(1, topK))
     .map(({ source, content }) => ({ source, content }));
 }

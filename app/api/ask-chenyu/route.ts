@@ -1,53 +1,58 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
-import fs from "fs";
-import path from "path";
-
-const client = new OpenAI({
-  apiKey: process.env.DEEPSEEK_API_KEY,
-  baseURL: "https://api.deepseek.com",
-});
-
-function loadKnowledgeBase() {
-  const dataDir = path.join(process.cwd(), "data", "chenyu");
-
-  if (!fs.existsSync(dataDir)) {
-    throw new Error(`Knowledge base folder not found: ${dataDir}`);
-  }
-
-  const files = fs.readdirSync(dataDir).filter((file) => file.endsWith(".md"));
-
-  return files.map((file) => ({
-    source: file,
-    content: fs.readFileSync(path.join(dataDir, file), "utf-8"),
-  }));
-}
+import { checkRateLimit, isSameOriginRequest } from "@/lib/api-security";
+import { retrieveContext } from "@/lib/rag";
 
 export async function POST(req: Request) {
-  try {
-    const { question } = await req.json();
+  if (!isSameOriginRequest(req)) {
+    return NextResponse.json({ error: "Invalid request origin." }, { status: 403 });
+  }
 
-    if (!question) {
-      return NextResponse.json({ error: "Question is required." }, { status: 400 });
+  const rateLimit = checkRateLimit(req, "ask-chenyu", 12, 10 * 60 * 1000);
+
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      { error: "Too many questions. Please try again shortly." },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimit.retryAfterSeconds) },
+      }
+    );
+  }
+
+  try {
+    const body = (await req.json()) as { question?: unknown };
+    const question = typeof body.question === "string" ? body.question.trim() : "";
+
+    if (!question || question.length > 500) {
+      return NextResponse.json(
+        { error: "Question must be between 1 and 500 characters." },
+        { status: 400 }
+      );
     }
 
     if (!process.env.DEEPSEEK_API_KEY) {
       return NextResponse.json({ error: "Missing DEEPSEEK_API_KEY." }, { status: 500 });
     }
 
-    const docs = loadKnowledgeBase();
+    const client = new OpenAI({
+      apiKey: process.env.DEEPSEEK_API_KEY,
+      baseURL: "https://api.deepseek.com",
+    });
+
+    const docs = retrieveContext(question, 3);
 
     const context = docs
       .map((doc) => `Source: ${doc.source}\n${doc.content}`)
       .join("\n\n---\n\n");
 
     const completion = await client.chat.completions.create({
-      model: "deepseek-chat",
+      model: process.env.DEEPSEEK_MODEL || "deepseek-chat",
       messages: [
         {
           role: "system",
           content:
-            "You are Chenyu, an AI assistant representing Chenyu Wang. Answer only based on the provided context. If the answer is not in the context, say you don't have enough information. Answer in the same language as the user.",
+            "You are Chenyu, an AI assistant representing Chenyu Wang. Answer only from the retrieved context. If the answer is absent, say you do not have enough information. Answer in the user's language and mention the source file names when helpful.",
         },
         {
           role: "user",
@@ -63,7 +68,7 @@ export async function POST(req: Request) {
     console.error("ASK_CHENYU_ERROR:", error);
 
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Failed to ask Chenyu." },
+      { error: "Failed to ask Chenyu. Please try again later." },
       { status: 500 }
     );
   }

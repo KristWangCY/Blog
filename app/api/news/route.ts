@@ -22,7 +22,13 @@ export async function GET(req: NextRequest) {
         ? RSS_MAP.crypto
         : RSS_MAP["us-stock"];
 
-    const feed = await parser.parseURL(rssUrl);
+    const response = await fetch(rssUrl, { next: { revalidate: 300 } });
+
+    if (!response.ok) {
+      throw new Error(`RSS request failed with status ${response.status}`);
+    }
+
+    const feed = await parser.parseString(await response.text());
 
     const news = feed.items.slice(0, 10).map((item, index) => ({
       id: String(index + 1),
@@ -32,7 +38,7 @@ export async function GET(req: NextRequest) {
       link: item.link || "",
 
       source:
-        (item as any).source ||
+        item.creator ||
         feed.title ||
         "CoinDesk",
 
@@ -40,6 +46,12 @@ export async function GET(req: NextRequest) {
         item.pubDate ||
         item.isoDate ||
         "",
+
+      summary: (item.contentSnippet || item.content || "")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 3000),
     }));
 
     return NextResponse.json({ news });

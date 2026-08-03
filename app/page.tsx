@@ -26,7 +26,12 @@ export default function Home() {
   async function handleJobWatchClick() {
     try {
       setJobScanning(true);
-      await fetch("/api/jobs/mastercard");
+      const response = await fetch("/api/jobs/mastercard");
+
+      if (!response.ok) {
+        throw new Error("Job scan failed");
+      }
+
       window.location.href = "/job-watch";
     } catch {
       setJobScanning(false);
@@ -74,7 +79,7 @@ export default function Home() {
 
             <div className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
               <p>This blog is a collection of all my interests and thoughts.</p>
-              <p className="mt-3">I'll keep updating it along the way.</p>
+              <p className="mt-3">I&apos;ll keep updating it along the way.</p>
             </div>
 
             <p className="mt-4 text-zinc-500">
