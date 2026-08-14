@@ -96,6 +96,24 @@ test("project updates are bilingual and the article page exposes the language sw
   assert.match(articlePage, /isChinese\s*\?\s*"English"\s*:\s*"中文"/);
 });
 
+test("the August update covers every active project in both languages", () => {
+  const english = readFileSync(join(postsDirectory, "project-update-2026-08.md"), "utf8");
+  const chinese = readFileSync(join(postsDirectory, "project-update-2026-08-cn.md"), "utf8");
+  const projectNames = [
+    "NOVA",
+    "K&M AI Administration",
+    "Email Assembler",
+    "RedNotesHouseRenting",
+    "WhatsApp Desktop",
+    "RithumAuto",
+  ];
+
+  for (const projectName of projectNames) {
+    assert.match(english, new RegExp(projectName));
+    assert.match(chinese, new RegExp(projectName));
+  }
+});
+
 test("job API route uses the correctly spelled latest path", () => {
   assert.ok(existsSync(join(root, "app", "api", "jobs", "latest", "route.ts")));
   assert.equal(existsSync(join(root, "app", "api", "jobs", "lastest", "route.ts")), false);
