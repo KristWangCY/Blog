@@ -54,6 +54,48 @@ test("every Chinese post has an English counterpart", () => {
   }
 });
 
+test("translated posts share one publication date", () => {
+  const names = new Set(readdirSync(postsDirectory));
+
+  for (const fileName of names) {
+    if (!fileName.endsWith("-cn.md")) {
+      continue;
+    }
+
+    const englishName = fileName.replace(/-cn\.md$/, ".md");
+    const chineseMetadata = frontmatter(join(postsDirectory, fileName));
+    const englishMetadata = frontmatter(join(postsDirectory, englishName));
+
+    assert.equal(
+      chineseMetadata.date,
+      englishMetadata.date,
+      `${fileName} and ${englishName} must use the same publication date`
+    );
+  }
+});
+
+test("project updates are bilingual and the article page exposes the language switch", () => {
+  const names = new Set(readdirSync(postsDirectory));
+
+  for (const fileName of names) {
+    if (fileName.endsWith("-cn.md")) {
+      continue;
+    }
+
+    const metadata = frontmatter(join(postsDirectory, fileName));
+    if (metadata.category === "Project Updates") {
+      assert.ok(
+        names.has(fileName.replace(/\.md$/, "-cn.md")),
+        `${fileName} needs a Chinese counterpart`
+      );
+    }
+  }
+
+  const articlePage = readFileSync(join(root, "app", "blog", "[slug]", "page.tsx"), "utf8");
+  assert.match(articlePage, /translatedPost\s*&&/);
+  assert.match(articlePage, /isChinese\s*\?\s*"English"\s*:\s*"中文"/);
+});
+
 test("job API route uses the correctly spelled latest path", () => {
   assert.ok(existsSync(join(root, "app", "api", "jobs", "latest", "route.ts")));
   assert.equal(existsSync(join(root, "app", "api", "jobs", "lastest", "route.ts")), false);

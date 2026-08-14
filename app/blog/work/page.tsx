@@ -26,6 +26,7 @@ export default async function WorkBlogPage({
           "Business Analytics Projects",
           "AI Projects",
           "Quant",
+          "Project Updates",
         ].includes(post.category)
     )
     .sort(
