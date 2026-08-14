@@ -16,6 +16,7 @@ Sportsbook Risk Trader
 Responses managed off LinkedIn
 
 About the job
+
 PENN Entertainment, Inc. is North America’s leading provider of integrated entertainment, sports content, and casino gaming experiences. From casinos and racetracks to online gaming, sports betting and entertainment content, we deliver the experiences people want, how and where they want them.
 
 We’re always on the lookout for those who are passionate about creating and delivering cutting-edge online gaming and sports media products. Whether it’s through Hollywood Casino, theScore Bet Sportsbook, or theScore media app, we’re excited to push the boundaries of what’s possible. These state-of-the-art platforms are powered by proprietary in-house technology, a key component of PENN’s omnichannel gaming and entertainment strategy.
@@ -101,6 +102,8 @@ My role was to monitor betting activity, analyse customer behaviour, identify ri
 在大型体育赛事期间，整个工作环境节奏非常快。我会与交易团队、运营团队以及客服团队紧密合作，调查异常投注行为，处理结算相关问题，并确保各个投注市场能够正常高效运行。
 
 总体而言，我的角色处于客户投注行为和风险管理之间。我的主要目标是帮助Sportsbook监控风险敞口、理解客户行为、识别潜在风险，并支持整个交易业务实现稳定且可持续的盈利。
+
+
 
 OKX Routine:
 
@@ -205,7 +208,9 @@ General - 具体知识
 Preparation-19
 Personal - 个人习惯
 
+Appreciate you taking the time this afternoon, I hope I am not standing in the way bewteen you and your afternoon tea.
 
+Thank you so much for the chat, to be honest I always get a little bit nervous before an interview, but you made this feel like a really normal, comfortable converstation, I really appreciate that.
 
 ***1. Tell me about yourself:***
 
@@ -215,7 +220,9 @@ My name is Chenyu Wang, and I recently graduated from Trinity College Dublin wit
 
 My background combines sports trading, risk management, and data analytics across the sports betting, cryptocurrency, and financial services industries.
 
-Originally, I studied Materials Science and Engineering. During my undergraduate studies, I was awarded a full scholarship to study at University College Cork, where I had the opportunity to take courses in physics, chemistry, and computer science. That experience broadened my interests and introduced me to data analysis, programming, and quantitative problem-solving. It was one of the key reasons I later decided to pursue a master's degree in Business Analytics at Trinity College Dublin.
+Originally, I studied Materials Science and Engineering. During my undergraduate studies, I was awarded a full scholarship to study at University College Cork, where I took courses in physics, chemistry, and computer science. That experience introduced me to data analysis and programming and ultimately led me to pursue an MSc in Business Analytics at Trinity College Dublin.
+
+Outside of academics, I was also drawn to Ireland's sports culture. I still remember watching an England vs Ireland rugby match in a packed pub, where everyone was wearing jerseys and reacting passionately to every play. That experience sparked my interest in the sports industry and gave me a deeper appreciation for the role sports play in people's lives and communities.
 
 Most recently, I worked as a Sports Trading Analyst at Flutter UK & Ireland, where I monitored sportsbook activity, analysed customer betting behaviour, tracked market exposure, and supported real-time risk-management decisions across multiple sporting events.
 
@@ -391,6 +398,24 @@ Sportsbook risk also involves making informed decisions based on data. This can 
 
 Ultimately, I see sportsbook risk as the balance between protecting the business from excessive exposure while continuing to offer an attractive betting experience for customers.
 
+Customer Bets
+↓
+Sportsbook Accepts Bet
+↓
+Risk Trader Monitors Activity
+↓
+Identify Sharp Action / Exposure Changes
+↓
+Communicate with Trading Team
+↓
+Odds / Limits / Risk Adjustments
+↓
+Event Ends
+↓
+Settlement
+↓
+Retrospective Risk Review
+
 ***15. Why did you move from Materials Science and Engineering to Business Analytics? - 转专业***
 I chose to move from Materials Science and Engineering to Business Analytics because, during my engineering studies, I became increasingly interested in data analysis, problem-solving, and decision-making.
 
@@ -505,7 +530,7 @@ Recently, I have been closely following the 2026 NBA Finals between the New York
 I also follow major football competitions such as the Premier League, but basketball is definitely the sport I follow most closely.
 
 ***NBA details***
-Personally, I think the Knicks are slightly favoured by the betting market at the moment, which is understandable given their 2-0 lead in the series. However, I actually like the Spurs' chances more than the market seems to.
+Personally, I think the Knicks are slightly favoured by the betting market at the moment, which is understandable given their 2-1 lead in the series. However, I actually like the Spurs' chances more than the market seems to.
 
 I've been a Spurs fan since the Duncan, Parker, and Ginóbili era, and I've really enjoyed watching the current team built around Wembanyama. What impresses me most is that they managed to eliminate a very strong Oklahoma City Thunder team to reach the Finals.
 
