@@ -1,5 +1,36 @@
 # Projects
 
+## TI 2026 Dota 2 Analytics and Prediction Research
+
+Chenyu built a research-only Dota 2 analytics and prediction system for The International 2026, covering professional matches from 7 April to 14 August 2026 and a frozen post-event Grand Final evaluation.
+
+The project combined:
+- OpenDota match and full pick/ban collection
+- official schedule and result verification
+- match-ID, roster, duplicate, conflict, anomaly, and hash audits
+- strict chronological validation and feature-time controls
+- Elo, pre-match v3, and post-draft model comparison
+- hero-priority and exact BP action evaluation
+- four DeepSeek analyst roles coordinated and audited by Codex
+
+The controlled dataset contained 1,054 maps, including 147 TI maps. The final model review found that v3 did not outperform Elo, the post-draft model added no validated incremental value, and calibration did not pass. The system therefore remains research-only and does not publish match probabilities, championship probabilities, team rankings, or betting advice.
+
+The Grand Final ended Team Spirit 3-2 Team Vision. The BP postmortem found useful focus-pool overlap but weak exact first-phase ban and first-pick prediction. The public release preserves this negative result instead of presenting the model as successful.
+
+Public project:
+- GitHub: https://github.com/KristWangCY/TI2026-Dota2-Analytics
+- Technical postmortem: /blog/ti-2026-dota2-analytics-postmortem
+- Chinese postmortem: /blog/ti-2026-dota2-analytics-postmortem-cn
+
+Technologies and methods:
+- Node.js 22
+- OpenDota API
+- chronological validation
+- Elo and probabilistic model evaluation
+- data quality and leakage testing
+- AI-agent governance
+
+---
 ## Personal AI Blog and RAG Agent — Chenyu Notes
 
 Chenyu built a personal AI-native blog platform called "Chenyu Notes" using Next.js, TypeScript, and Tailwind CSS.
